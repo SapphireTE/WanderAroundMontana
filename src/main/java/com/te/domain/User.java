@@ -21,13 +21,17 @@ public class User {
     public String email;
 
     @Column(name="password")
-    public int password;
-
-    @Column(name="stats")
-    public int stats;
+    public String password;
 
     @Column(name="date_of_birth")
     public String dob;
+
+    public String getEmail(){
+        return this.email;
+    }
+    public void setEmail(String email){
+        this.email=email;
+    }
 
 
 
