@@ -14,8 +14,8 @@ public class Scenery {
     @Column(name="nature")
     public String nature;
 
-    @Column(name="nation_parks")
-    public String nationParks;
+    @Column(name="national_parks")
+    public String nationalParks;
 
     public String getCategory(){
         return this.category;
@@ -31,10 +31,10 @@ public class Scenery {
         this.nature=nature;
     }
 
-    public String getNationParks(){
-        return this.nationParks;
+    public String getNationalParks(){
+        return this.nationalParks;
     }
-    public void setNationParks(String nationParks){
-        this.nationParks=nationParks;
+    public void setNationalParks(String nationParks){
+        this.nationalParks=nationParks;
     }
 }

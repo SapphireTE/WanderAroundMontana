@@ -5,8 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="recreations")
+@Table(name="outdoor_Recreations")
 public class OutdoorRecreation {
+
+    @Column(name="category")
+    public String category;
 
     @Column(name="hiking")
     public String hiking;
@@ -16,6 +19,13 @@ public class OutdoorRecreation {
 
     @Column(name="skiing")
     public String skiing;
+
+    public String getCategory(){
+        return this.category;
+    }
+    public void setCategory(String category){
+        this.category=category;
+    }
 
     public String getHiking(){
         return this.hiking;
