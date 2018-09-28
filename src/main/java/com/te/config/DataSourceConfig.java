@@ -4,19 +4,23 @@ import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 
 import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
+@EnableTransactionManagement
+@EnableJpaRepositories(basePackages = "com.te.repository")
 public class DataSourceConfig {
     private String driverClassName="org.postgresql.ds.PGSimpleDataSource";
 
-    private String databaseUrl="jdbc:postgresql://localhost:5432/car";
+    private String databaseUrl="jdbc:postgresql://localhost:5432/wamontana";
 
     private String databaseUsername="mac";
 

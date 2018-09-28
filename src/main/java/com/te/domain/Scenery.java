@@ -2,11 +2,15 @@ package com.te.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="sceneries")
 public class Scenery {
+
+    @Id
+    public Long id;
 
     @Column(name="category")
     public String category;
@@ -16,6 +20,10 @@ public class Scenery {
 
     @Column(name="national_parks")
     public String nationalParks;
+
+    public Long getId(){
+        return this.id;
+    }
 
     public String getCategory(){
         return this.category;
