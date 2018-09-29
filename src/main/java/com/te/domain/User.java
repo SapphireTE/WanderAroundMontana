@@ -27,8 +27,8 @@ public class User {
     @Column(name="password")
     public String password;
 
-    @Column(name="date_of_birth")
-    public String dateOfBirth;
+//    @Column(name="date_of_birth")
+//    public String dateOfBirth;
 
     public String getEmail(){
         return this.email;
@@ -58,12 +58,12 @@ public class User {
         this.password=password;
     }
 
-    public String getDateOfBirth(){
-        return this.dateOfBirth;
-    }
-    public void setDateOfBirth(String dateOfBirth){
-        this.dateOfBirth=dateOfBirth;
-    }
+//    public String getDateOfBirth(){
+//        return this.dateOfBirth;
+//    }
+//    public void setDateOfBirth(String dateOfBirth){
+//        this.dateOfBirth=dateOfBirth;
+//    }
 
     public String getFirstName(){
         return this.firstName;

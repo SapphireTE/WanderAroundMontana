@@ -20,7 +20,7 @@ import java.util.Properties;
 public class DataSourceConfig {
     private String driverClassName="org.postgresql.ds.PGSimpleDataSource";
 
-    private String databaseUrl="jdbc:postgresql://localhost:5432/wamontana";
+    private String databaseUrl="jdbc:postgresql://localhost:5432/montana_dev";
 
     private String databaseUsername="mac";
 
