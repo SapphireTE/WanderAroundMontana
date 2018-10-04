@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.Instant;
 
 @Entity
 @Table(name="users")
@@ -28,7 +29,7 @@ public class User {
     public String password;
 
     @Column(name="date_of_birth")
-    public String dateOfBirth;
+    public Instant dateOfBirth;
 
     public String getEmail(){
         return this.email;
@@ -58,10 +59,10 @@ public class User {
         this.password=password;
     }
 
-    public String getDateOfBirth(){
+    public Instant getDateOfBirth(){
         return this.dateOfBirth;
     }
-    public void setDateOfBirth(String dateOfBirth){
+    public void setDateOfBirth(Instant dateOfBirth){
         this.dateOfBirth=dateOfBirth;
     }
 

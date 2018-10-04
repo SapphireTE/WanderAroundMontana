@@ -1,4 +1,4 @@
-REATE SEQUENCE scenery_id_seq;
+CREATE SEQUENCE scenery_id_seq;
 create table scenery (
    id bigint not null DEFAULT NEXTVAL('scenery_id_seq'),
    category varchar(255) not NULL,
@@ -7,4 +7,4 @@ create table scenery (
    primary key (id)
 );
 
-ALTER SEQUENCE scenery_id_seq OWNED by scenery.id;
+ALTER SEQUENCE scenery_id_seq OWNED BY scenery.id;

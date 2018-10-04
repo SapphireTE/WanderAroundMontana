@@ -18,7 +18,7 @@ public class Scenery {
     @Column(name="nature")
     public String nature;
 
-    @Column(name="national_parks")
+    @Column(name="national_park")
     public String nationalParks;
 
     public Long getId(){

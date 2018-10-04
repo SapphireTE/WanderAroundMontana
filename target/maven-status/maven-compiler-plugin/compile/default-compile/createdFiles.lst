@@ -1,4 +1,7 @@
-com/te/domain/User.class
 com/te/config/MvcConfig.class
+com/te/domain/OutdoorRecreation.class
 com/te/config/DataSourceConfig.class
 com/te/config/AppConfig.class
+com/te/domain/User.class
+com/te/domain/CulturalInheritance.class
+com/te/domain/Scenery.class

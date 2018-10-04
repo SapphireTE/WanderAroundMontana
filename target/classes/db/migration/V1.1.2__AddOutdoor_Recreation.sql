@@ -5,7 +5,8 @@ create table Outdoor_recreations (
    hiking varchar(255) not NULL,
 	 fishing varchar(255) not NULL,
    skiing varchar(255) not NULL,
+   distance float not null,
 	 primary key (id)
 );
 
-ALTER SQUENCE outdoorRecreations_id_seq OWNED by Outdoor_Recreations.id;
+ALTER SEQUENCE outdoorRecreations_id_seq OWNED BY Outdoor_Recreations.id;

@@ -8,4 +8,4 @@ create table Outdoor_recreations (
 	 primary key (id)
 );
 
-ALTER SQUENCE outdoorRecreations_id_seq OWNED by Outdoor_Recreations.id;
+ALTER SEQUENCE outdoorRecreations_id_seq OWNED BY Outdoor_Recreations.id;
