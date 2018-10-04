@@ -6,6 +6,7 @@ create table Users (
     first_name varchar(255),
     last_name varchar(255),
     password varchar(255) not NULL,
+    date_of_birth varchar (255) not NULL,
     primary key (id)
 );
 ALTER SEQUENCE users_id_seq OWNED BY Users.id;

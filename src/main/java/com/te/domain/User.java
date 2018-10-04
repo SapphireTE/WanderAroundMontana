@@ -27,8 +27,8 @@ public class User {
     @Column(name="password")
     public String password;
 
-//    @Column(name="date_of_birth")
-//    public String dateOfBirth;
+    @Column(name="date_of_birth")
+    public String dateOfBirth;
 
     public String getEmail(){
         return this.email;
