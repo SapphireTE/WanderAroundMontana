@@ -58,12 +58,12 @@ public class User {
         this.password=password;
     }
 
-//    public String getDateOfBirth(){
-//        return this.dateOfBirth;
-//    }
-//    public void setDateOfBirth(String dateOfBirth){
-//        this.dateOfBirth=dateOfBirth;
-//    }
+    public String getDateOfBirth(){
+        return this.dateOfBirth;
+    }
+    public void setDateOfBirth(String dateOfBirth){
+        this.dateOfBirth=dateOfBirth;
+    }
 
     public String getFirstName(){
         return this.firstName;
