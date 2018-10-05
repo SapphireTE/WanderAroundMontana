@@ -5,7 +5,6 @@ create table Outdoor_recreations (
    hiking varchar(255) not NULL,
 	 fishing varchar(255) not NULL,
    skiing varchar(255) not NULL,
-   distance float not null,
 	 primary key (id)
 );
 

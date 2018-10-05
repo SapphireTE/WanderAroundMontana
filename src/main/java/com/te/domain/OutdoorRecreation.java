@@ -24,8 +24,8 @@ public class OutdoorRecreation {
     @Column(name="skiing")
     public String skiing;
 
-    @Column(name="distant")
-    public Double distant;
+    @Column(name="distance")
+    public Double distance;
 
     public Long getId(){
         return this.id;
@@ -60,9 +60,9 @@ public class OutdoorRecreation {
     }
 
     public Double getDistant(){
-        return this.distant;
+        return this.distance;
     }
     public void setDistant(Double distant){
-        this.distant=distant;
+        this.distance=distant;
     }
 }
