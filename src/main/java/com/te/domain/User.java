@@ -1,16 +1,17 @@
 package com.te.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.Instant;
+
+import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
 @Table(name="users")
 public class User {
 
     @Id
+    @GeneratedValue(strategy = SEQUENCE, generator ="users_id_seq")
+    @SequenceGenerator(name ="users_id_seq", sequenceName ="users_id_seq",allocationSize = 1)
     public Long id;
 
     @Column(name="username",unique = true)
