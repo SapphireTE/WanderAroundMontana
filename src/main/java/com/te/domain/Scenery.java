@@ -1,15 +1,16 @@
 package com.te.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
+import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
 @Table(name="scenery")
 public class Scenery {
 
     @Id
+    @GeneratedValue(strategy = SEQUENCE, generator = "scenery_id_seq")
+    @SequenceGenerator(name="scenery_id_seq", sequenceName = "scenery_id_seq", allocationSize = 1)
     public Long id;
 
     @Column(name="category")

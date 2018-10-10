@@ -1,15 +1,16 @@
 package com.te.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
+import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
 @Table(name="cultural_inheritances")
 public class CulturalInheritance {
 
     @Id
+    @GeneratedValue(strategy = SEQUENCE, generator = "culturalInheritance_id_seq")
+    @SequenceGenerator(name="culturalInheritance_id_seq", sequenceName = "culturalInheritance_id_seq", allocationSize = 1)
     public Long id;
 
     @Column(name="category")
