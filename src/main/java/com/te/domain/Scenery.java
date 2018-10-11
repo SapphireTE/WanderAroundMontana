@@ -5,12 +5,12 @@ import javax.persistence.*;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
-@Table(name="scenery")
+@Table(name="sceneries")
 public class Scenery {
 
     @Id
-    @GeneratedValue(strategy = SEQUENCE, generator = "scenery_id_seq")
-    @SequenceGenerator(name="scenery_id_seq", sequenceName = "scenery_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = SEQUENCE, generator = "sceneries_id_seq")
+    @SequenceGenerator(name="sceneries_id_seq", sequenceName = "sceneries_id_seq", allocationSize = 1)
     public Long id;
 
     @Column(name="category")
