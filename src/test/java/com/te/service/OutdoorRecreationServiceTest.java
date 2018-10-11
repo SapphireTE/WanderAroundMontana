@@ -2,7 +2,6 @@ package com.te.service;
 
 import com.te.config.AppConfig;
 import com.te.domain.OutdoorRecreation;
-import com.te.domain.Scenery;
 import com.te.repository.OutdoorRecreationRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,7 +34,7 @@ public class OutdoorRecreationServiceTest {
         expectedResult.setHiking("hiking");
         expectedResult.setFishing("m");
         expectedResult.setSkiing("resorts");
-//        expectedResult.setDistance("1 mile");
+        expectedResult.setDistant(1.11);
         outdoorRecreationRepository.save(expectedResult);
         OutdoorRecreation actualResult=outdoorRecreationService.findByCategory (expectedResult.getCategory());
         assertEquals(expectedResult.getId(), actualResult.getId());

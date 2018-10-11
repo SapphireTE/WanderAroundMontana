@@ -43,7 +43,8 @@ public class CulturalInheritance {
     public String getHistoricalScene(){
         return this.historicalScene;
     }
+
     public void setHistoricalScene(String historicalScene){
-        this.museum=museum;
+        this.historicalScene=historicalScene;
     }
 }
