@@ -9,8 +9,8 @@ import static javax.persistence.GenerationType.SEQUENCE;
 public class CulturalInheritance {
 
     @Id
-    @GeneratedValue(strategy = SEQUENCE, generator = "culturalInheritance_id_seq")
-    @SequenceGenerator(name="culturalInheritance_id_seq", sequenceName = "culturalInheritance_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = SEQUENCE, generator = "culturalinheritances_id_seq")
+    @SequenceGenerator(name="culturalinheritances_id_seq", sequenceName = "culturalinheritances_id_seq", allocationSize = 1)
     public Long id;
 
     @Column(name="category")

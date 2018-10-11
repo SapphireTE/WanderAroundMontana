@@ -9,8 +9,8 @@ import static javax.persistence.GenerationType.SEQUENCE;
 public class OutdoorRecreation {
 
     @Id
-    @GeneratedValue(strategy = SEQUENCE, generator = "outdoorRecreation_id_seq")
-    @SequenceGenerator(name="outdoorRecreation_id_seq", sequenceName = "outdoorRecreation_id_seq", allocationSize=1)
+    @GeneratedValue(strategy = SEQUENCE, generator = "outdoorrecreations_id_seq")
+    @SequenceGenerator(name="outdoorrecreations_id_seq", sequenceName = "outdoorrecreations_id_seq", allocationSize=1)
     public Long id;
 
     @Column(name="category")
