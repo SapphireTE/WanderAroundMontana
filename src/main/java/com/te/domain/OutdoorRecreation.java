@@ -60,10 +60,10 @@ public class OutdoorRecreation {
         this.skiing=skiing;
     }
 
-    public Double getDistant(){
+    public Double getDistance(){
         return this.distance;
     }
-    public void setDistant(Double distant){
-        this.distance=distant;
+    public void setDistance(Double distance){
+        this.distance=distance;
     }
 }

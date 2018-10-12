@@ -14,4 +14,9 @@ public class CulturalInheritanceService {
         CulturalInheritance result=culturalInheritanceRepository.findByCategoryIgnoreCase(name);
         return result;
     }
+
+    public CulturalInheritance save(CulturalInheritance culturalInheritance){
+        CulturalInheritance result=culturalInheritanceRepository.save(culturalInheritance);
+        return result;
+    }
 }

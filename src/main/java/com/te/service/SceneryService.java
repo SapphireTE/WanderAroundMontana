@@ -14,4 +14,9 @@ public class SceneryService {
         Scenery result= sceneryRepository.findByCategoryIgnoreCase(name);
         return result;
     }
+
+    public Scenery save (Scenery scenery){
+        Scenery result=sceneryRepository.save(scenery);
+        return result;
+    }
 }

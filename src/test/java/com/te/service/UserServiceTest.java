@@ -37,6 +37,8 @@ public class UserServiceTest {
         userRepository.save(expectedResult);
         User actualResult=userService.findByUsername(expectedResult.getUsername());
         assertEquals(expectedResult.getId(), actualResult.getId());
+//        User actualResult=userService.saveEmail(expectedResult.getUsername());
+//        assertEquals(expectedResult.getId(), actualResult.getId());
     }
 
 

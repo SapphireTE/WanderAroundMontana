@@ -34,7 +34,7 @@ public class OutdoorRecreationServiceTest {
         expectedResult.setHiking("hiking");
         expectedResult.setFishing("m");
         expectedResult.setSkiing("resorts");
-        expectedResult.setDistant(1.11);
+        expectedResult.setDistance(1.11);
         outdoorRecreationRepository.save(expectedResult);
         OutdoorRecreation actualResult=outdoorRecreationService.findByCategory (expectedResult.getCategory());
         assertEquals(expectedResult.getId(), actualResult.getId());

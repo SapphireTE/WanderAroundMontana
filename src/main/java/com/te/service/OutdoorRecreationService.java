@@ -14,4 +14,9 @@ public class OutdoorRecreationService {
         OutdoorRecreation result=outdoorRecreationRepository.findByCategoryIgnoreCase(name);
         return result;
     }
+
+    public OutdoorRecreation save(OutdoorRecreation outdoorRecreation){
+        OutdoorRecreation result=outdoorRecreationRepository.save(outdoorRecreation);
+        return result;
+    }
 }
