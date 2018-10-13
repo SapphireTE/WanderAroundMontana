@@ -44,7 +44,7 @@ public class DataSourceConfig {
 
     @Bean(name="dataSource")
     public DataSource getDataSource() {
-        DataSource dataSource = creatDataSource();
+        DataSource dataSource = createDataSource();
         logger.trace("i am trace message");
         logger.debug("create datasource");
         logger.info("i am info message");
@@ -54,7 +54,7 @@ public class DataSourceConfig {
         return dataSource;
     }
 
-    private BasicDataSource creatDataSource(){
+    private BasicDataSource createDataSource(){
         BasicDataSource dataSource=new BasicDataSource();
         dataSource.setDriverClassName(driverClassName);
         dataSource.setUrl(databaseUrl);
@@ -104,5 +104,8 @@ public class DataSourceConfig {
         transactionManager.setDataSource(dataSource);
         return transactionManager;
     }
+
+
 }
+
 

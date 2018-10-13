@@ -5,6 +5,8 @@ import com.te.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
     @Autowired
@@ -15,6 +17,21 @@ public class UserService {
         return result;
     }
 
+    public User findById(Long Id){
+        Optional<User> result=userRepository.findById(Id);
+        User user = result.get();
+        return user;
+    }
+
+    public User createUser(User user){
+        User result=userRepository.save(user);
+        return result;
+    }
+
+
+//    public User SaveUsername (User user){
+//        User result=userRepository.
+//    }
 }
 
 
