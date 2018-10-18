@@ -24,6 +24,11 @@ public class SceneryService {
         return scenery;
     }
 
+    public Scenery createScenery(Scenery scenery){
+        Scenery result=sceneryRepository.save(scenery);
+        return result;
+    }
+
 //    public Scenery findById (Long Id){
 //        Scenery result=sceneryRepository.findById(Id);
 //        return result;
