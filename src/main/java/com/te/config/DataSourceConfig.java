@@ -27,7 +27,6 @@ import java.util.Properties;
 public class DataSourceConfig {
     private final Logger logger= LoggerFactory.getLogger(getClass());
 
-
     @Value("#{applicationProperties['database.dataSourceClassName']}")
     private String driverClassName;
 

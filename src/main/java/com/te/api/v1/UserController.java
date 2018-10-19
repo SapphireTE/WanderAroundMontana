@@ -22,7 +22,7 @@ public class UserController {
         return result;
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(value = "/signingup", method = RequestMethod.POST)
     public User createUser(@RequestBody User user){
         User result=userService.createUser(user);
         return result;
