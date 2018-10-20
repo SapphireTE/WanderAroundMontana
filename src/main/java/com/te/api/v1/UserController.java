@@ -38,7 +38,7 @@ public class UserController {
     @RequestMapping(value="", method=RequestMethod.GET, params={"first_name"})
     public User findByFirst_name(@RequestParam("first_name") String First_name){
         logger.debug("parameter name is:" +First_name);
-        User result =userService.findByFirst_nameIgnoreCase(First_name);
+        User result =userService.findByFirstNameIgnoreCase(First_name);
         return result;
     }
 
