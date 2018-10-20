@@ -12,7 +12,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public User findByUsername(String name){
+    public User findByUsernameIgnoreCase(String name){
         User result=userRepository.findByUsernameIgnoreCase(name);
         return result;
     }
@@ -27,6 +27,15 @@ public class UserService {
         User result=userRepository.save(user);
         return result;
     }
+
+    public User findByFirst_nameIgnoreCase(String First_name){
+        Optional<User> result=userRepository.findByFirst_nameIgnoreCase(First_name);
+        User user=result.get();
+        return user;
+    }
+
+
+
 
 
 

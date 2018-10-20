@@ -22,11 +22,27 @@ public class UserController {
         return result;
     }
 
-    @RequestMapping(value = "/signingup", method = RequestMethod.POST)
+    @RequestMapping(value = "/signup", method = RequestMethod.POST)
     public User createUser(@RequestBody User user){
         User result=userService.createUser(user);
         return result;
     }
+
+    @RequestMapping(value="", method = RequestMethod.GET,params={"username"})
+    public User findByUsername(@RequestParam("username") String Username){
+        logger.debug("parameter name is:" +Username);
+        User result=userService.findByUsernameIgnoreCase(Username);//return userService.findBy(new Car(carId)).get();
+        return result;
+    }
+
+    @RequestMapping(value="", method=RequestMethod.GET, params={"first_name"})
+    public User findByFirst_name(@RequestParam("first_name") String First_name){
+        logger.debug("parameter name is:" +First_name);
+        User result =userService.findByFirst_nameIgnoreCase(First_name);
+        return result;
+    }
+
+    
 
 
 
