@@ -28,8 +28,8 @@ public class UserService {
         return result;
     }
 
-    public User findByFirstNameIgnoreCase(String First_name){
-        Optional<User> result=userRepository.findByFirstNameIgnoreCase(First_name);
+    public User findByFirstNameIgnoreCase(String FirstName){
+        Optional<User> result=userRepository.findByFirstNameIgnoreCase(FirstName);
         User user=result.get();
         return user;
     }

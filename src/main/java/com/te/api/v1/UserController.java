@@ -35,10 +35,10 @@ public class UserController {
         return result;
     }
 
-    @RequestMapping(value="", method=RequestMethod.GET, params={"first_name"})
-    public User findByFirst_name(@RequestParam("first_name") String First_name){
-        logger.debug("parameter name is:" +First_name);
-        User result =userService.findByFirstNameIgnoreCase(First_name);
+    @RequestMapping(value="", method=RequestMethod.GET, params={"firstName"})
+    public User findByFirstName(@RequestParam("firstName") String FirstName){
+        logger.debug("parameter name is:" +FirstName);
+        User result =userService.findByFirstNameIgnoreCase(FirstName);
         return result;
     }
 
