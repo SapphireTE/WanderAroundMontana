@@ -35,7 +35,7 @@ public class UserServiceTest {
         expectedResult.setEmail("te@gmail.com");
         expectedResult.setPassword("123456");
         userRepository.save(expectedResult);
-        User actualResult=userService.findByUsername(expectedResult.getUsername());
+        User actualResult=userService.findByUsernameIgnoreCase(expectedResult.getUsername());
         assertEquals(expectedResult.getId(), actualResult.getId());
     }
 

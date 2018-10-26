@@ -9,7 +9,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
     User findByUsernameIgnoreCase(String username);
 //    User createUser(Long user);
 //    Optional<User> findById(Long Id);
-    Optional<User> findByFirst_nameIgnoreCase(String username);
+    Optional<User> findByFirstNameIgnoreCase(String username);
 }
 
 
