@@ -57,10 +57,10 @@ public class SecurityConfig {
         private UserDetailsService userDetailsService;
         @Autowired
         public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//            PasswordEncoder encoder = new BCryptPasswordEncoder();
-            auth.inMemoryAuthentication().withUser("user")
-                .password("{noop}password").roles("REGISTERED_USER");
-//            auth.userDetailsService(userDetailsService).passwordEncoder(encoder);
+            PasswordEncoder encoder = new BCryptPasswordEncoder();
+//            auth.inMemoryAuthentication().withUser("user")
+//                .password("{noop}password").roles("REGISTERED_USER");
+            auth.userDetailsService(userDetailsService).passwordEncoder(encoder);
         }
         @Override
         public void configure(WebSecurity web) throws Exception {
@@ -71,11 +71,11 @@ public class SecurityConfig {
             //http://www.baeldung.com/securing-a-restful-web-service-with-spring-security
             http.csrf().disable().authorizeRequests().antMatchers("/api/users/login","/api/users/signup").permitAll()
                     .and()
-                    .authorizeRequests().antMatchers("/api/**").authenticated()
-                    .and()
-                    .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint)
-                    .and()
-                    .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                    .authorizeRequests().antMatchers("/api/**").hasAnyRole("REGISTERED_USER","ADMIN")
+//                    .and()
+//                    .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint)
+//                    .and()
+//                    .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                     .and()
                     .formLogin();
         }
