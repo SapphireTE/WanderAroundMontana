@@ -3,14 +3,18 @@ package com.te.service;
 import com.te.domain.User;
 import com.te.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
 public class UserService {
     @Autowired
     private UserRepository userRepository;
+
+    private BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
 
     public User findByUsernameIgnoreCase(String name){
         User result=userRepository.findByUsernameIgnoreCase(name);
@@ -23,8 +27,11 @@ public class UserService {
         return user;
     }
 
-    public User createUser(User user){
-        User result=userRepository.save(user);
+    @Transactional
+    public User createUser(User newUser){
+        String encodedPass=encoder.encode(newUser.getPassword());
+        newUser.setPassword(encodedPass);
+        User result=userRepository.save(newUser);
         return result;
     }
 
