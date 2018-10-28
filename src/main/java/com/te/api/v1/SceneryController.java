@@ -1,6 +1,7 @@
 package com.te.api.v1;
 
 import com.te.domain.Scenery;
+import com.te.domain.User;
 import com.te.service.SceneryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value="/api/scereries")
-public class SceneryServiceController {
+public class SceneryController {
     private final Logger logger= LoggerFactory.getLogger(getClass());
 
     @Autowired
@@ -22,10 +23,22 @@ public class SceneryServiceController {
         return result;
     }
 
-    public Scenery createScenery(@RequestBody Scenery scenery){
-        Scenery result=sceneryService.createScenery(scenery);
+//    public Scenery createScenery(@RequestBody Scenery scenery){
+//        Scenery result=sceneryService.createScenery(scenery);
+//        return result;
+//    }
+
+    @RequestMapping(value="", method=RequestMethod.GET, params={"category"})
+    public Scenery findByCategory(@RequestParam("category") String Category){
+        logger.debug("parameter name is:" +Category);
+        Scenery result =sceneryService.findByCategory(Category);
         return result;
     }
 
+//    public Scenery findByNature(@RequestParam("nature") String Nature){
+//        logger.debug("parameter name is:" +Nature);
+//        Scenery result=sceneryService.findByNature(Nature);
+//        return result;
+//    }
 
 }
