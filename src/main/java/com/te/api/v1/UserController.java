@@ -5,9 +5,12 @@ import com.te.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -56,16 +59,19 @@ public class UserController {
     }
 
     @RequestMapping(value="/login",method = RequestMethod.POST, params={"username", "password"})
-    public void findByLoggingUser(@RequestParam(value="username")String username, @RequestParam(value="password") String password){
-        logger.debug("parameter name is:" +username);
-        logger.debug("parameter name is:" +password);
+    public void findByLoggingUser(@RequestParam(value="username")String username, @RequestParam(value="password") String password) {
+        logger.debug("parameter name is:" + username);
+        logger.debug("parameter name is:" + password);
 
+        try {
+            Authentication notFullyAuthentication = new UsernamePasswordAuthenticationToken(username, password);
+            final Authentication authentication = authenicationManager.authenticate(notFullyAuthentication);
 
-        Authentication notFullyAuthentication= new UsernamePasswordAuthenticationToken(username,password);
-        final Authentication authentication=authenicationManager.authenticate(notFullyAuthentication);
+        } catch (AuthenticationException ex) {
+            logger.info("failed message", ex);
+        }
+
     }
-
-
 }
 
 
