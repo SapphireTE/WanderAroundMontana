@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mobile.device.Device;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -59,9 +60,10 @@ public class UserController {
     }
 
     @RequestMapping(value="/login",method = RequestMethod.POST, params={"username", "password"})
-    public void findByLoggingUser(@RequestParam(value="username")String username, @RequestParam(value="password") String password) {
+    public void findByLoggingUser(@RequestParam(value="username")String username, @RequestParam(value="password") String password, Device device) {
         logger.debug("parameter name is:" + username);
         logger.debug("parameter name is:" + password);
+
 
         try {
             Authentication notFullyAuthentication = new UsernamePasswordAuthenticationToken(username, password);

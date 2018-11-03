@@ -1,9 +1,12 @@
 package com.te.extend.security;
 
 
-import com.sun.org.apache.xml.internal.security.algorithms.SignatureAlgorithm;
 import com.te.domain.User;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mobile.device.Device;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -165,9 +168,9 @@ public class JwtTokenUtil {
 //        final Date expiration = getExpirationDateFromToken(token);
         return (
                 username.equals(user.getUsername())
-                        && !isTokenExpired(token)
-                        && !isCreatedBeforeLastPasswordReset(created, Date.from(user.getLastResetAt())));
-    }
+                        && !isTokenExpired(token));
+//                        && !isCreatedBeforeLastPasswordReset(created, Date.from(user.getLastResetAt())));
+  }
 }
 
 
