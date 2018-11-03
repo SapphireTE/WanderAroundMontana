@@ -59,4 +59,16 @@
         <filter-name>springSecurityFilterChain</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+    <!--device filter-->
+    <filter>
+        <filter-name>deviceResolverRequestFilter</filter-name>
+        <filter-class>org.springframework.mobile.device.DeviceResolverRequestFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>deviceResolverRequestFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
 </web-app>

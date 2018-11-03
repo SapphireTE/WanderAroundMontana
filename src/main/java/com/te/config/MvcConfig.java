@@ -8,7 +8,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.ResourceHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.mobile.device.DeviceHandlerMethodArgumentResolver;
 import org.springframework.web.accept.ContentNegotiationManager;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -41,6 +43,17 @@ public class MvcConfig implements WebMvcConfigurer {
         return resolver;
     }
 
+    @Bean
+    public DeviceHandlerMethodArgumentResolver deviceHandlerMethodArgumentResolver(){
+        return new DeviceHandlerMethodArgumentResolver();
+    }
+
+    @Override
+    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers){
+        argumentResolvers.add(deviceHandlerMethodArgumentResolver());
+    }
+
+    @Bean
     public ViewResolver jsonViewResolver(){
         return new JsonViewResolver();
     }
