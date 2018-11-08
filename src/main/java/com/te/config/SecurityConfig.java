@@ -82,7 +82,17 @@ public class SecurityConfig {
             http.csrf().disable().authorizeRequests().antMatchers("/api/users/login","/api/users/signup").permitAll()
                     .and()
                     //api/admin ADMIN
-                    //api/sceneary/** GET
+                    .authorizeRequests().antMatchers("/api/admin").hasAnyRole("ADMIN")
+                    //api/scenery/** GET
+                    .and()
+                    .authorizeRequests().antMatchers("/api/scenery/**").hasAnyRole("GET")
+                    //api/outdoor_recreation/** GET
+                    .and()
+                    .authorizeRequests().antMatchers("/api/outdoor_recreation/**").hasAnyRole("GET")
+                    //api/cultural_inheritance/** GET
+                    .and()
+                    .authorizeRequests().antMatchers("/api/cultural_inheritance/**").hasAnyRole("GET")
+                    .and()
                     .authorizeRequests().antMatchers("/api/**").hasAnyRole("REGISTERED_USER","ADMIN")
 //                    .and()
 //                    .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint)
