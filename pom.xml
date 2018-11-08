@@ -231,7 +231,7 @@
                         <configuration>
                             <driver>org.postgresql.Driver</driver>
                             <url>jdbc:postgresql://localhost:5432/montana_dev</url>
-                            <user>mac</user>
+                            <user>tsaite</user>
                             <password>123456</password>
                             <locations>
                                 <location>db/migration</location>
