@@ -23,13 +23,20 @@ public class UserController {
     private UserService userService;
 
     @Autowired
-    private AuthenticationManager authenicationManager;
+    private AuthenticationManager authenticationManager;
 
     @RequestMapping(value="/{Id}", method = RequestMethod.GET)
     public User findById (@PathVariable("Id") Long Id){
         logger.debug("user path variable is:" +Id);
         User result=userService.findById(Id);
         return result;
+
+//        try{
+//            Authentication notFullyAuthentication=new IdAuthenticationToken(Id);
+//            final Authentication authentication=authenticationManager.authenticate(notFullyAuthentication);
+//        }catch (AuthenticationException ex){
+//            logger.info("invalid Id", ex);
+//        }
     }
 
 //    @RequestMapping(value = "/signup", method = RequestMethod.POST)
@@ -39,10 +46,17 @@ public class UserController {
 //    }
 
     @RequestMapping(value="", method = RequestMethod.GET,params={"username"})
-    public User findByUsername(@RequestParam("username") String Username){
+    public User findByUsername(@RequestParam(value="username") String Username, Device device){
         logger.debug("parameter name is:" +Username);
         User result=userService.findByUsernameIgnoreCase(Username);//return userService.findBy(new Car(carId)).get();
         return result;
+
+//        try{
+//            Authentication notFullyAuthentication = new UsernameAuthenticationToken(username);
+//            final Authentication authentication = authenticationManager.authenticate(notFullyAuthentication);
+//        }catch (AuthenticationException ex){
+//            logger.info("invalid username", ex);
+//        }
     }
 
 
@@ -67,13 +81,17 @@ public class UserController {
 
         try {
             Authentication notFullyAuthentication = new UsernamePasswordAuthenticationToken(username, password);
-            final Authentication authentication = authenicationManager.authenticate(notFullyAuthentication);
+            final Authentication authentication = authenticationManager.authenticate(notFullyAuthentication);
 
         } catch (AuthenticationException ex) {
             logger.info("failed message", ex);
         }
 
     }
+
+
+
+
 }
 
 

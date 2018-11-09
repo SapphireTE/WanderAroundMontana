@@ -4,6 +4,7 @@ import com.te.extend.security.RestAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -37,20 +38,20 @@ public class SecurityConfig {
 //                .formLogin();
 //    }
     //step2
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("user")
-                .password("{noop}password").roles("USER");
-    }
-
-    protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().authorizeRequests().antMatchers("/api/users/login","/api/user/login","/api/users/signup").permitAll()
-                .and()
-                .authorizeRequests().antMatchers("/api/**").hasAnyRole("REGISTERED_USER","ADMIN")
-                .and()
-                .formLogin();
-//                .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint);
-    }
+    //@Autowired
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.inMemoryAuthentication().withUser("user")
+//                .password("{noop}password").roles("USER");
+//    }
+//
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http.csrf().disable().authorizeRequests().antMatchers("/api/users/login","/api/user/login","/api/users/signup").permitAll()
+//                .and()
+//                .authorizeRequests().antMatchers("/api/**").hasAnyRole("REGISTERED_USER","ADMIN")
+//                .and()
+//                .formLogin();
+////                .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint);
+//    }
     @Configuration
     public static class RestWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
         @Autowired
@@ -85,13 +86,13 @@ public class SecurityConfig {
                     .authorizeRequests().antMatchers("/api/admin").hasAnyRole("ADMIN")
                     //api/scenery/** GET
                     .and()
-                    .authorizeRequests().antMatchers("/api/scenery/**").hasAnyRole("GET")
+                    .authorizeRequests().antMatchers(HttpMethod.GET,"/api/scenery/**").permitAll()
                     //api/outdoor_recreation/** GET
                     .and()
-                    .authorizeRequests().antMatchers("/api/outdoor_recreation/**").hasAnyRole("GET")
+                    .authorizeRequests().antMatchers(HttpMethod.GET,"/api/outdoor_recreation/**").permitAll()
                     //api/cultural_inheritance/** GET
                     .and()
-                    .authorizeRequests().antMatchers("/api/cultural_inheritance/**").hasAnyRole("GET")
+                    .authorizeRequests().antMatchers(HttpMethod.GET,"/api/cultural_inheritance/**").permitAll()
                     .and()
                     .authorizeRequests().antMatchers("/api/**").hasAnyRole("REGISTERED_USER","ADMIN")
 //                    .and()
