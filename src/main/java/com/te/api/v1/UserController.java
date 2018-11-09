@@ -2,7 +2,7 @@ package com.te.api.v1;
 
 import com.te.domain.User;
 import com.te.extend.security.JwtTokenUtil;
-import com.te.extend.security.RestAuthentication;
+import com.te.extend.security.RestAuthenticationRequest;
 import com.te.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -80,15 +80,17 @@ public class UserController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ResponseEntity<?> login (@RequestBody RestAuthentication restAuthentication, Device device) {
-        logger.debug("parameter name is:" + restAuthentication.username);
-        logger.debug("parameter name is:" + restAuthentication.password);
+    public ResponseEntity<?> login (@RequestBody RestAuthenticationRequest restAuthenticationRequest, Device device) {
+        String username=restAuthenticationRequest.getUsername();
+        String password=restAuthenticationRequest.getPassword();
+        logger.debug("parameter name is:" +username);
+        logger.debug("parameter name is:" +password);
 
 
         try {
-            Authentication notFullyAuthentication = new UsernamePasswordAuthenticationToken(restAuthentication.username, restAuthentication.password);
+            Authentication notFullyAuthentication = new UsernamePasswordAuthenticationToken(username, password);
             final Authentication authentication = authenticationManager.authenticate(notFullyAuthentication);
-            UserDetails userDetails = userService.findByUsernameIgnoreCase(restAuthentication.username);
+            UserDetails userDetails = userService.findByUsernameIgnoreCase(username);
             final String token = jwtTokenUtil.generateToken(userDetails, device);
             return ResponseEntity.ok(token);
 
