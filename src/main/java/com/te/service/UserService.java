@@ -35,6 +35,12 @@ public class UserService {
         return result;
     }
 
+//    public User addUser(){
+//        User user=new User();
+//        user.setUser(user);
+//        return userRepository.save(user);
+//    }
+
 
 
     public User findByFirstNameIgnoreCase(String FirstName){
