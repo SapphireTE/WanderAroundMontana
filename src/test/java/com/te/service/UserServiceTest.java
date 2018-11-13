@@ -39,5 +39,4 @@ public class UserServiceTest {
         assertEquals(expectedResult.getId(), actualResult.getId());
     }
 
-
 }

@@ -16,25 +16,25 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator ="users_id_seq")
     @SequenceGenerator(name ="users_id_seq", sequenceName ="users_id_seq",allocationSize = 1)
-    public Long id;
+    private Long id;
 
     @Column(name="username",unique = true)
-    public String username;
+    private String username;
 
     @Column(name="first_name")
-    public String firstName;
+    private String firstName;
 
     @Column(name="last_name")
-    public String lastName;
+    private String lastName;
 
     @Column(name="email", unique = true)
-    public String email;
+    private String email;
 
     @Column(name="password")
-    public String password;
+    private String password;
 
     @Column(name="date_of_birth")
-    public Instant dateOfBirth;
+    private Instant dateOfBirth;
 
     public String getEmail(){
         return this.email;
@@ -52,6 +52,9 @@ public class User implements UserDetails {
 
     public String getUsername(){
         return this.username;
+    }
+    public void setUsername(String username){
+        this.username=username;
     }
 
     @Override
@@ -72,10 +75,6 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
-    }
-
-    public void setUsername(String username){
-        this.username=username;
     }
 
     @Override
