@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 
 @Service
@@ -22,11 +23,12 @@ public class AuthorityService {
         return authorityRepository.save(authority);
     }
 
+
     //TODO findAuthoriesByUser
 
-    public Authority findAuthorityByUser(String authority){
-        Authority result=authorityRepository.findAuthorityByUser(authority);
-        return result;
+    public List<Authority> findAuthoritiesByUser(User user){
+        List<Authority> authorities=authorityRepository.findAuthoritiesByUser(user);
+        return authorities;
     }
 
 
