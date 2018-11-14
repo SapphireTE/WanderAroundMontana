@@ -16,6 +16,8 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import javax.transaction.Transactional;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 @WebAppConfiguration
@@ -36,6 +38,7 @@ public class AuthorityServiceTest {
     @Transactional
     public void addAuthorityTest(){
         User createUser = new User();
+        Authority authority=new Authority();
         createUser.setUsername("te");
         createUser.setPassword("123456");
         createUser.setEmail("te@gmail.com");
@@ -44,9 +47,14 @@ public class AuthorityServiceTest {
 //        expectedAuthority.setUser(createUser);
 //        authorityRepository.save(expectedAuthority);
         userRepository.save(createUser);
-        Authority expectedAuthority=authorityService.addAuthority("registered_user",createUser);
-        User actualAuthority=authorityService.findAuthorityByUser(expectedAuthority.getUser());
-        assertEquals(expectedAuthority.getAuthority(),actualAuthority.getAuthorities());
+        Authority expected=authorityService.addAuthority("admin",createUser);
+        List<Authority> expectedAuthority=authorityService.findAuthoritiesByUser(createUser);
+//        User actualAuthority=authorityService.findAuthoritiesByUser(expectedAuthority.getUser());
+        assertEquals(3,expectedAuthority.size());
+
+
+
+
     }
 
 //    @Test
