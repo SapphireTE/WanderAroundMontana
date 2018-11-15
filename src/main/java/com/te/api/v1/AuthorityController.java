@@ -17,7 +17,7 @@ public class AuthorityController {
     private AuthorityService authorityService;
 
 //    @RequestMapping(value = "/authorities", method = RequestMethod.GET)
-//    public Authority authority(@RequestParam("authorities") String authority) {
+//    public Authority authority(@RequestBody("authorities") String authority) {
 //        logger.debug("parameter name is:" +authority);
 //        Authority result = authorityService.findAuthoritiesByUser();
 //        return result;

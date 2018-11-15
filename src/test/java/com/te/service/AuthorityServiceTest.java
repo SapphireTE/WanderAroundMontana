@@ -47,7 +47,9 @@ public class AuthorityServiceTest {
 //        expectedAuthority.setUser(createUser);
 //        authorityRepository.save(expectedAuthority);
         userRepository.save(createUser);
-        Authority expected=authorityService.addAuthority("admin",createUser);
+        Authority expected1=authorityService.addAuthority("admin",createUser);
+        Authority expected2=authorityService.addAuthority("registered_user",createUser);
+        Authority expected3=authorityService.addAuthority("registered_user",createUser);
         List<Authority> expectedAuthority=authorityService.findAuthoritiesByUser(createUser);
 //        User actualAuthority=authorityService.findAuthoritiesByUser(expectedAuthority.getUser());
         assertEquals(3,expectedAuthority.size());
