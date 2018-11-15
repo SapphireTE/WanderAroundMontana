@@ -23,9 +23,6 @@ public class AuthorityService {
         return authorityRepository.save(authority);
     }
 
-
-    //TODO findAuthoriesByUser
-
     public List<Authority> findAuthoritiesByUser(User user){
         List<Authority> authorities=authorityRepository.findAuthoritiesByUser(user);
         return authorities;
