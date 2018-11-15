@@ -1,12 +1,12 @@
-Create SEQUENCE authority_id_seq;
+Create SEQUENCE authorities_id_seq;
 create table authorities (
-    id bigint not null DEFAULT NEXTVAL ('authority_id_seq'),
+    id bigint not null DEFAULT NEXTVAL ('authorities_id_seq'),
     user_id bigint,
     authority varchar(255) not null,
     primary key (id)
 );
 
-Alter SEQUENCE authority_id_seq owned by authorities.id;
+Alter SEQUENCE authorities_id_seq owned by authorities.id;
 
 ALTER TABLE authorities ADD CONSTRAINT fk_authority_user
    FOREIGN KEY (user_id)
