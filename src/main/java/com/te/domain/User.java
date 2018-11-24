@@ -13,7 +13,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @Table(name="users")
 public class User implements UserDetails {
 
-    @Id
+    @Id //tell id is a primary key
     @GeneratedValue(strategy = SEQUENCE, generator ="users_id_seq")
     @SequenceGenerator(name ="users_id_seq", sequenceName ="users_id_seq",allocationSize = 1)
     private Long id;
@@ -35,6 +35,9 @@ public class User implements UserDetails {
 
     @Column(name="date_of_birth")
     private Instant dateOfBirth;
+
+    //constructor
+    //public User(){}
 
     public String getEmail(){
         return this.email;
