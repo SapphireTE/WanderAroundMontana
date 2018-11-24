@@ -41,7 +41,7 @@ public class DataSourceConfig {
 
 
 
-    @Bean(name="dataSource")
+    @Bean(name="dataSource") //
     public DataSource getDataSource() {
         DataSource dataSource = createDataSource();
         logger.trace("i am trace message");
@@ -53,7 +53,7 @@ public class DataSourceConfig {
         return dataSource;
     }
 
-    private BasicDataSource createDataSource(){
+    private BasicDataSource createDataSource(){ //connecting database
         BasicDataSource dataSource=new BasicDataSource();
         dataSource.setDriverClassName(driverClassName);
         dataSource.setUrl(databaseUrl);
@@ -68,7 +68,7 @@ public class DataSourceConfig {
         return dataSource;
     }
 
-    @Bean(name="entityManagerFactory")
+    @Bean(name="entityManagerFactory") //read
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean() {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
 
