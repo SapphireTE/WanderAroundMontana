@@ -55,18 +55,19 @@ public class UserServiceTest {
 
 
         User newUser=new User();
-        String password = "123456";
-        Authority authority=new Authority();
+        String password = "123456"; //?
+//        Authority authority=new Authority();
         newUser.setUsername("tete");
         newUser.setEmail("tete@hotmail.com");
         newUser.setPassword(password);
 //        Authority newUserAuthority=
 
-        User user=userService.createUser(newUser);
+        User expectedUser=userService.createUser(newUser);
 
         User actualUser=userService.findById(newUser.getId());
 
         assertEquals(newUser.getUsername(), actualUser.getUsername());
+        assertEquals(newUser.getEmail(),actualUser.getEmail());
         assertNotEquals(password,actualUser.getPassword());
     }
 
