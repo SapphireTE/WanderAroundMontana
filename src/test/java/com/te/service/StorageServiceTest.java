@@ -27,8 +27,8 @@ public class StorageServiceTest {
 
     @Test
     public void putObjectTest (){
-        AmazonS3 s3=AmazonS3ClientBuilder.standard().withRegion("us-east-1").build();
-        //AmazonS3 s3=AmazonS3ClientBuilder.defaultClient();
+//        AmazonS3 s3=AmazonS3ClientBuilder.standard().withRegion("us-east-1").build();
+        AmazonS3 s3=AmazonS3ClientBuilder.defaultClient();
         StorageService storageService=new StorageService(s3);
         String s3key="tt";
         File file=new File("/Users/tsai_te/Desktop/Screen Shot 2018-10-27 at 11.48.30 AM.png");

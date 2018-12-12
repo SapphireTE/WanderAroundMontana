@@ -17,6 +17,8 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+
 @RestController
 @RequestMapping(value="/api/users")
 public class UserController {
@@ -91,14 +93,24 @@ public class UserController {
             Authentication notFullyAuthentication = new UsernamePasswordAuthenticationToken(username, password);
             final Authentication authentication = authenticationManager.authenticate(notFullyAuthentication);
             UserDetails userDetails = userService.findByUsernameIgnoreCase(username);
+
+            //how to change the token responsebody from string to the following format {"token": "xxx.xxx.xxx"}
             final String token = jwtTokenUtil.generateToken(userDetails, device);
-            return ResponseEntity.ok(token);
+            HashMap<String,String> tokenString=new HashMap<>();
+            tokenString.put("Token",token);
+            return ResponseEntity.ok(tokenString);
 
         } catch (AuthenticationException ex) {
             logger.info("failed message", ex);
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("invalid username or password");
         }
     }
+
+//    public static void main(String[] arg){
+//
+//    }
+
+
 
 }
 
