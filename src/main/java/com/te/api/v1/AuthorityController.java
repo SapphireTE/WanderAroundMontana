@@ -16,10 +16,10 @@ public class AuthorityController {
     @Autowired
     private AuthorityService authorityService;
 
-//    @RequestMapping(value = "/authorities", method = RequestMethod.GET)
-//    public Authority authority(@RequestBody("authorities") String authority) {
-//        logger.debug("parameter name is:" +authority);
-//        Authority result = authorityService.findAuthoritiesByUser();
+//    @RequestMapping(value = "/{Id}", method = RequestMethod.GET)
+//    public Authority findByAuthority(@PathVariable("Authority") String Authority) {
+//        logger.debug("parameter name is:" +Authority);
+//        Authority result = authorityService.findByAuthority(Authority);
 //        return result;
 //    }
 }

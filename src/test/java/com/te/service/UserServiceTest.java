@@ -3,6 +3,7 @@ package com.te.service;
 import com.te.config.AppConfig;
 import com.te.domain.Authority;
 import com.te.domain.User;
+import com.te.repository.AuthorityRepository;
 import com.te.repository.UserRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +15,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import javax.transaction.Transactional;
+
+import java.util.List;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
@@ -29,6 +32,9 @@ public class UserServiceTest {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private AuthorityRepository authorityRepository;
 
     @Test
     @Transactional
@@ -60,15 +66,20 @@ public class UserServiceTest {
         newUser.setUsername("tete");
         newUser.setEmail("tete@hotmail.com");
         newUser.setPassword(password);
-//        Authority newUserAuthority=
-
         User expectedUser=userService.createUser(newUser);
-
         User actualUser=userService.findById(newUser.getId());
+//        authority.setAuthority("REGISTERED_USER_ROLE");
+        List<Authority> actualAuthorities=authorityRepository.findAuthoritiesByUser(expectedUser);
 
         assertEquals(newUser.getUsername(), actualUser.getUsername());
         assertEquals(newUser.getEmail(),actualUser.getEmail());
         assertNotEquals(password,actualUser.getPassword());
+        assertEquals(1,actualAuthorities.size());
+        Authority actualAuthority = actualAuthorities.get(0);
+        assertEquals("REGISTERED_USER_ROLE",actualAuthority.getAuthority());
+        assertEquals(actualUser.getId(),actualAuthority.getUser().getId());
+
+//        assertEquals(expectedUser.getAuthorities(),actualUser.getAuthorities());
     }
 
 

@@ -1,11 +1,14 @@
 package com.te.service;
 
+import com.te.domain.Authority;
 import com.te.domain.User;
+import com.te.repository.AuthorityRepository;
 import com.te.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.management.relation.Role;
 import javax.transaction.Transactional;
 import java.util.Optional;
 
@@ -13,6 +16,9 @@ import java.util.Optional;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private AuthorityService authorityService;
 
     private BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
 
@@ -29,9 +35,11 @@ public class UserService {
 
     @Transactional
     public User createUser(User newUser){
+//        Authority addAuthority=new Authority();
         String encodedPass=encoder.encode(newUser.getPassword());
         newUser.setPassword(encodedPass);
         User result=userRepository.save(newUser);
+        authorityService.addAuthority("ROLE_REGISTERED_USER",result);
         return result;
     }
 
