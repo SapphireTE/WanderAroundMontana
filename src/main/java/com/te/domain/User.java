@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.time.Instant;
 import java.util.Collection;
+import java.util.List;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
@@ -38,6 +39,8 @@ public class User implements UserDetails {
 
     //constructor
     //public User(){}
+    @Transient
+    private List<Authority> authorities;
 
     public String getEmail(){
         return this.email;
@@ -82,8 +85,9 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return this.authorities;
     }
+    public void setAuthorities(List<Authority> authorities) {this.authorities=authorities;}
 
     public String getPassword(){
         return this.password;
@@ -112,4 +116,6 @@ public class User implements UserDetails {
     public void setLastName(String lastName){
         this.lastName=lastName;
     }
+
 }
+
