@@ -13,8 +13,8 @@ public class SceneryService {
     @Autowired
     private SceneryRepository sceneryRepository;
 
-    public Scenery findByCategory(String name){
-        Scenery result= sceneryRepository.findByCategoryIgnoreCase(name);
+    public Scenery findByCategory(String category){
+        Scenery result= sceneryRepository.findByCategoryIgnoreCase(category);
         return result;
     }
 
@@ -29,11 +29,11 @@ public class SceneryService {
 //        return result;
 //    }
 
-//    public Scenery findByNature(String name){
-//        Optional<Scenery> result=sceneryRepository.findByNature(Nature);
+    public Scenery findByNature(String name){
+        Scenery nature=sceneryRepository.findByNature(name);
 //        Scenery nature = result.get();
-//        return nature;
-//    }
+        return nature;
+    }
 
 //    public Scenery findById (Long Id){
 //        Scenery result=sceneryRepository.findById(Id);

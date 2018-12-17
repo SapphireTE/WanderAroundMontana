@@ -35,10 +35,11 @@ public class SceneryController {
         return result;
     }
 
-//    public Scenery findByNature(@RequestParam("nature") String Nature){
-//        logger.debug("parameter name is:" +Nature);
-//        Scenery result=sceneryService.findByNature(Nature);
-//        return result;
-//    }
+    @RequestMapping(value="",method=RequestMethod.GET,params={"nature"})
+    public Scenery findByNature(@RequestParam("nature") String Nature){
+        logger.debug("parameter name is:" +Nature);
+        Scenery result=sceneryService.findByNature(Nature);
+        return result;
+    }
 
 }
