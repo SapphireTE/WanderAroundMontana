@@ -13,8 +13,8 @@ public class CulturalInheritanceService {
     @Autowired
     private CulturalInheritanceRepository culturalInheritanceRepository;
 
-    public CulturalInheritance findByCategory(String name){
-        CulturalInheritance result=culturalInheritanceRepository.findByCategoryIgnoreCase(name);
+    public CulturalInheritance findByCategory(String category){
+        CulturalInheritance result=culturalInheritanceRepository.findByCategoryIgnoreCase(category);
         return result;
     }
 
@@ -26,6 +26,16 @@ public class CulturalInheritanceService {
 
     public CulturalInheritance createCulturalInheritance(CulturalInheritance culturalInheritance){
         CulturalInheritance result=culturalInheritanceRepository.save(culturalInheritance);
+        return result;
+    }
+
+    public CulturalInheritance findByMuseum(String museum){
+        CulturalInheritance result=culturalInheritanceRepository.findByMuseum(museum);
+        return result;
+    }
+
+    public CulturalInheritance findByHistoricalScene(String historicalScene){
+        CulturalInheritance result=culturalInheritanceRepository.findByHistoricalScene(historicalScene);
         return result;
     }
 }

@@ -5,11 +5,10 @@ import com.te.service.CulturalInheritanceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
+@RestController
+@RequestMapping(value="/api/culturalInheritance")
 public class CulturalInheritanceController {
     private final Logger logger= LoggerFactory.getLogger(getClass());
 
@@ -26,6 +25,20 @@ public class CulturalInheritanceController {
     @RequestMapping(method = RequestMethod.POST )
     public CulturalInheritance createCulturalInheritance(@RequestBody CulturalInheritance culturalInheritance){
         CulturalInheritance result=culturalInheritanceService.createCulturalInheritance(culturalInheritance);
+        return result;
+    }
+
+    @RequestMapping(value = "", method=RequestMethod.GET)
+    public CulturalInheritance findByMuseum(@PathVariable("Museum") String Museum){
+        logger.debug("culturalInheritance path variable is:"+Museum);
+        CulturalInheritance result=culturalInheritanceService.findByMuseum(Museum);
+        return result;
+    }
+
+    @RequestMapping(value="",method = RequestMethod.GET)
+    public CulturalInheritance findByHistoricalScene(@PathVariable("Historial_Scene") String HistoricalScene){
+        logger.debug("culturalInheritance path variable is:"+HistoricalScene);
+        CulturalInheritance result=culturalInheritanceService.findByHistoricalScene(HistoricalScene);
         return result;
     }
 }
