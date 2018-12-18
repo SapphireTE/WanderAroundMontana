@@ -29,14 +29,19 @@ public class SceneryService {
 //        return result;
 //    }
 
-    public Scenery findByNature(String name){
-        Scenery nature=sceneryRepository.findByNature(name);
+    public Scenery findByNature(String nature){
+        Scenery result=sceneryRepository.findByNature(nature);
 //        Scenery nature = result.get();
-        return nature;
+        return result;
     }
 
 //    public Scenery findById (Long Id){
 //        Scenery result=sceneryRepository.findById(Id);
 //        return result;
 //    }
+
+    public Scenery findByNationalParks(String nationalParks){
+        Scenery result=sceneryRepository.findByNationalParks(nationalParks);
+        return result;
+    }
 }

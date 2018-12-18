@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value="/api/authorities")
 public class AuthorityController {
@@ -16,10 +18,11 @@ public class AuthorityController {
     @Autowired
     private AuthorityService authorityService;
 
-//    @RequestMapping(value = "/{Id}", method = RequestMethod.GET)
-//    public Authority findByAuthority(@PathVariable("Authority") String Authority) {
+
+//    @RequestMapping(value = "",method = RequestMethod.GET)
+//    public Authority findAuthoritiesByUser(@PathVariable("Authority") List<Authority> Authority) {
 //        logger.debug("parameter name is:" +Authority);
-//        Authority result = authorityService.findByAuthority(Authority);
+//        Authority result = authorityService.findAuthoritiesByUser(Authority);
 //        return result;
 //    }
 }

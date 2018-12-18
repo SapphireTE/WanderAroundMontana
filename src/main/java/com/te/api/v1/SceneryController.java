@@ -18,7 +18,7 @@ public class SceneryController {
 
     @RequestMapping(value = "/{Id}", method = RequestMethod.GET)
     public Scenery findById(@PathVariable ("Id") Long Id){
-        logger.debug("user path variable is:" +Id);
+        logger.debug("scenery path variable is:" +Id);
         Scenery result=sceneryService.findById(Id);
         return result;
     }
@@ -39,6 +39,13 @@ public class SceneryController {
     public Scenery findByNature(@RequestParam("nature") String Nature){
         logger.debug("parameter name is:" +Nature);
         Scenery result=sceneryService.findByNature(Nature);
+        return result;
+    }
+
+    @RequestMapping(value="", method = RequestMethod.GET, params={"national_park"})
+    public Scenery findByNationalParks(@RequestParam("national_park") String NationalParks){
+        logger.debug("parameter name is:" +NationalParks);
+        Scenery result=sceneryService.findByNationalParks(NationalParks);
         return result;
     }
 

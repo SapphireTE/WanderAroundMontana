@@ -13,8 +13,8 @@ public class OutdoorRecreationService {
     @Autowired
     private OutdoorRecreationRepository outdoorRecreationRepository;
 
-    public OutdoorRecreation findByCategory(String name){
-        OutdoorRecreation result=outdoorRecreationRepository.findByCategoryIgnoreCase(name);
+    public OutdoorRecreation findByCategory(String category){
+        OutdoorRecreation result=outdoorRecreationRepository.findByCategoryIgnoreCase(category);
         return result;
     }
 
@@ -26,6 +26,26 @@ public class OutdoorRecreationService {
 
     public OutdoorRecreation createOutdoorRecreation(OutdoorRecreation outdoorRecreation){
         OutdoorRecreation result=outdoorRecreationRepository.save(outdoorRecreation);
+        return result;
+    }
+
+    public OutdoorRecreation findByHiking (String hiking){
+        OutdoorRecreation result=outdoorRecreationRepository.findByHiking(hiking);
+        return result;
+    }
+
+    public OutdoorRecreation findByFishing (String fishing){
+        OutdoorRecreation result=outdoorRecreationRepository.findByFishing(fishing);
+        return result;
+    }
+
+    public OutdoorRecreation findBySkiing (String skiing){
+        OutdoorRecreation result=outdoorRecreationRepository.findBySkiing(skiing);
+        return result;
+    }
+
+    public OutdoorRecreation findByDistance (Double distance){
+        OutdoorRecreation result=outdoorRecreationRepository.findByDistance(distance);
         return result;
     }
 }
