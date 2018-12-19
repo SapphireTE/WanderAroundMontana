@@ -29,24 +29,24 @@ public class SceneryController {
 //    }
 
     @RequestMapping(value="", method=RequestMethod.GET, params={"category"})
-    public Scenery findByCategory(@RequestParam("category") String Category){
-        logger.debug("parameter name is:" +Category);
-        Scenery result =sceneryService.findByCategory(Category);
-        return result;
+    public Scenery findByCategory(@RequestParam("category") String category){
+        logger.debug("scenery parameter name is:" +category);
+//        Scenery result =sceneryService.findByCategory(category);
+        return new Scenery();
     }
 
-    @RequestMapping(value="",method=RequestMethod.GET,params={"nature"})
-    public Scenery findByNature(@RequestParam("nature") String Nature){
-        logger.debug("parameter name is:" +Nature);
-        Scenery result=sceneryService.findByNature(Nature);
-        return result;
-    }
-
-    @RequestMapping(value="", method = RequestMethod.GET, params={"national_park"})
-    public Scenery findByNationalParks(@RequestParam("national_park") String NationalParks){
-        logger.debug("parameter name is:" +NationalParks);
-        Scenery result=sceneryService.findByNationalParks(NationalParks);
-        return result;
-    }
+//    @RequestMapping(value="",method=RequestMethod.GET,params={"nature"})
+//    public Scenery findByNature(@RequestParam("nature") String Nature){
+//        logger.debug("parameter name is:" +Nature);
+//        Scenery result=sceneryService.findByNature(Nature);
+//        return result;
+//    }
+//
+//    @RequestMapping(value="", method = RequestMethod.GET, params={"national_park"})
+//    public Scenery findByNationalParks(@RequestParam("national_park") String NationalParks){
+//        logger.debug("parameter name is:" +NationalParks);
+//        Scenery result=sceneryService.findByNationalParks(NationalParks);
+//        return result;
+//    }
 
 }
