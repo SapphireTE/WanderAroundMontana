@@ -51,7 +51,7 @@ public class User implements UserDetails {
 
     public Long getId(){
         return this.id;
-    }
+    } //no needs to set Id, postgres would give an Id automatically
 //    public void setId(Long id){
 //        this.id=id;
 //    }

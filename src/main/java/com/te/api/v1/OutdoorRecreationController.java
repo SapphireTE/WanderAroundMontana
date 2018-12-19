@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value="/api/outdoorRecreations")
+@RequestMapping(value="/api/outdoor")
 public class OutdoorRecreationController {
     private final Logger logger= LoggerFactory.getLogger(getClass()); //??????
 
@@ -29,38 +29,38 @@ public class OutdoorRecreationController {
 //    }
 
     @RequestMapping(value="",method = RequestMethod.GET)
-    public OutdoorRecreation findByCategory (@PathVariable("Category") String Category){
-        logger.debug("outdoor_recreation path variable is:" +Category);//???????
-        OutdoorRecreation result=outdoorRecreationService.findByCategory(Category);
-        return result;
+    public OutdoorRecreation findByCategory (@RequestParam("category") String category){
+        logger.debug("outdoor_recreation paramter variable is:" +category);//???????
+//        OutdoorRecreation result=outdoorRecreationService.findByCategory(category);
+        return new OutdoorRecreation();
     }
 
-    @RequestMapping(value="",method = RequestMethod.GET)
-    public OutdoorRecreation findByHiking(@RequestParam("Hiking") String Hiking){
-        logger.debug("outdoor_recreation path variable is:"+Hiking);
-        OutdoorRecreation result=outdoorRecreationService.findByHiking(Hiking);
-        return result;
-    }
-
-    @RequestMapping(value="",method = RequestMethod.GET)
-    public OutdoorRecreation findBySkiing(@RequestParam("Skiing") String Skiing){
-        logger.debug("outdoor_recreation path variable is:"+Skiing);
-        OutdoorRecreation result=outdoorRecreationService.findBySkiing(Skiing);
-        return result;
-    }
-
-    @RequestMapping(value="",method = RequestMethod.GET)
-    public OutdoorRecreation findByFishing(@RequestParam("Fishing") String Fishing){
-        logger.debug("outdoor_recreation path variable is:"+Fishing);
-        OutdoorRecreation result=outdoorRecreationService.findByFishing(Fishing);
-        return result;
-    }
-
-    @RequestMapping(value="",method = RequestMethod.GET)
-    public OutdoorRecreation findByDistance(@RequestParam("Distance") Double Distance){
-        logger.debug("outdoor_recreation path variable is:"+Distance);
-        OutdoorRecreation result=outdoorRecreationService.findByDistance(Distance);
-        return result;
-    }
+//    @RequestMapping(value="",method = RequestMethod.GET)
+//    public OutdoorRecreation findByHiking(@RequestParam("Hiking") String Hiking){
+//        logger.debug("outdoor_recreation path variable is:"+Hiking);
+//        OutdoorRecreation result=outdoorRecreationService.findByHiking(Hiking);
+//        return result;
+//    }
+//
+//    @RequestMapping(value="",method = RequestMethod.GET)
+//    public OutdoorRecreation findBySkiing(@RequestParam("Skiing") String Skiing){
+//        logger.debug("outdoor_recreation path variable is:"+Skiing);
+//        OutdoorRecreation result=outdoorRecreationService.findBySkiing(Skiing);
+//        return result;
+//    }
+//
+//    @RequestMapping(value="",method = RequestMethod.GET)
+//    public OutdoorRecreation findByFishing(@RequestParam("Fishing") String Fishing){
+//        logger.debug("outdoor_recreation path variable is:"+Fishing);
+//        OutdoorRecreation result=outdoorRecreationService.findByFishing(Fishing);
+//        return result;
+//    }
+//
+//    @RequestMapping(value="",method = RequestMethod.GET)
+//    public OutdoorRecreation findByDistance(@RequestParam("Distance") Double Distance){
+//        logger.debug("outdoor_recreation path variable is:"+Distance);
+//        OutdoorRecreation result=outdoorRecreationService.findByDistance(Distance);
+//        return result;
+//    }
 
 }

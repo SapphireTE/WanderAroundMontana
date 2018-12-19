@@ -71,7 +71,6 @@ public class DataSourceConfig {
     @Bean(name="entityManagerFactory") //read
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean() {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
-
         factoryBean.setDataSource(getDataSource());
         factoryBean.setPackagesToScan(new String[] { "com.te.domain","com.te.repository" });
         factoryBean.setPersistenceProviderClass(HibernatePersistenceProvider.class);

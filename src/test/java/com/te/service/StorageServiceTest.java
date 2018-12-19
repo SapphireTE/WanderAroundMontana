@@ -73,9 +73,9 @@ public class StorageServiceTest {
         String bucket="mt.project";
         storageService.putObject(key,file);
         verify(client,times(1)).putObject("mt.project",key,file);
-//        String key2=null;
-//        storageService.putObject(key2);
-//        verify(client,times(1).putObject("mt.project",key,file));
+        String key2=null;
+        storageService.putObject(key2,file);
+        verify(client,times(1)).putObject("mt.project",key2,file);
     }
 
 }
