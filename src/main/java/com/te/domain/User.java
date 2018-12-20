@@ -15,8 +15,8 @@ import static javax.persistence.GenerationType.SEQUENCE;
 public class User implements UserDetails {
 
     @Id //this annotation tells id is a primary key
-    @GeneratedValue(strategy = SEQUENCE, generator ="users_id_seq")
-    @SequenceGenerator(name ="users_id_seq", sequenceName ="users_id_seq",allocationSize = 1)
+    @GeneratedValue(strategy = SEQUENCE, generator ="users_id_seq") //indicate which table to generate value
+    @SequenceGenerator(name ="users_id_seq", sequenceName ="users_id_seq",allocationSize = 1) //indicate sequence size
     private Long id;
 
     @Column(name="username",unique = true)

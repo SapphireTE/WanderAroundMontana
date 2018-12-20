@@ -78,4 +78,12 @@ public class StorageServiceTest {
         verify(client,times(1)).putObject("mt.project",key2,file);
     }
 
+    public void getObjectTest(){
+        String s3key="hhhh";
+        File file=new File("/Users/tsai_te/Desktop/testjpg.png");
+        String bucket="mt.project";
+        storageService.putObject(s3key,file);
+        assertTrue(false);
+    }
+
 }

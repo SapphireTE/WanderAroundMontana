@@ -273,8 +273,8 @@
                         <version>${flyway.version}</version>
                         <configuration>
                             <driver>org.postgresql.Driver</driver>
-                            <url>jdbc:postgresql://localhost:5432/montana_dev</url>
-                            <user>tsaite</user>
+                            <url>jdbc:postgresql://localhost:5432/wamt_dev</url>
+                            <user>Tsai_Te</user>
                             <password>123456</password>
                             <locations>
                                 <location>db/migration</location>
@@ -294,8 +294,8 @@
                         <version>${flyway.version}</version>
                         <configuration>
                             <driver>org.postgresql.Driver</driver>
-                            <url>jdbc:postgresql://localhost:5432/montana_unit</url>
-                            <user>tsaite</user>
+                            <url>jdbc:postgresql://localhost:5432/wamt_unit</url>
+                            <user>Tsai_Te</user>
                             <password>123456</password>
                             <locations>
                                 <location>db/migration</location>
