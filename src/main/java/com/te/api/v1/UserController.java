@@ -1,5 +1,6 @@
 package com.te.api.v1;
 
+import com.te.domain.JsView;
 import com.te.domain.User;
 import com.te.extend.security.JwtTokenUtil;
 import com.te.extend.security.RestAuthenticationRequest;
@@ -21,7 +22,7 @@ import java.util.HashMap;
 
 @RestController
 @RequestMapping(value="/api/users")
-public class UserController {
+public class UserController extends BaseController {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
@@ -55,6 +56,8 @@ public class UserController {
 
     @RequestMapping(value = "", method = RequestMethod.GET, params = {"username"})
     public User findByUsername(@RequestParam(value = "username") String Username, Device device) {
+        setJsonViewClass(JsView.User.class); //what situation or role
+        disableMapperFeature_DEFAULT_VIEW_INCLUSION();
         logger.debug("parameter name is:" + Username);
         User result = userService.findByUsernameIgnoreCase(Username);//return userService.findBy(new Car(carId)).get();
         return result;
@@ -66,6 +69,7 @@ public class UserController {
 //            logger.info("invalid username", ex);
 //        }
     }
+
 
 
     @RequestMapping(value = "", method = RequestMethod.GET, params = {"first_name"})

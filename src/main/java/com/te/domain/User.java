@@ -1,5 +1,8 @@
 package com.te.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -20,6 +23,7 @@ public class User implements UserDetails {
     private Long id;
 
     @Column(name="username",unique = true)
+    @JsonView({JsView.User.class}) //display under what situation or role
     private String username;
 
     @Column(name="first_name")
@@ -29,17 +33,25 @@ public class User implements UserDetails {
     private String lastName;
 
     @Column(name="email", unique = true)
+//    @JsonIgnore
     private String email;
 
     @Column(name="password")
     private String password;
 
+//    @Column(name="confirm_Password")
+//    @JsonIgnore
+//    private String confirmPassword;
+
     @Column(name="date_of_birth")
     private Instant dateOfBirth;
 
+//    @Column(name="is_delete")
+//    private Boolean isDelete;
+
     //constructor
     //public User(){}
-    @Transient
+    @Transient //will not save in database
     private List<Authority> authorities;
 
     public String getEmail(){
@@ -63,22 +75,40 @@ public class User implements UserDetails {
         this.username=username;
     }
 
+//    @Column
+//    private String timezone;
+//
+//    @JsonIgnore
+//    private Boolean enabled=true;
+//
+//    @JsonIgnore
+//    private Boolean locked=false;
+//
+//    @JsonIgnore
+//    private Boolean expired=false;
+
     @Override
+    @JsonIgnore
     public boolean isAccountNonExpired() {
         return true;
     }
 
     @Override
+    @JsonIgnore
     public boolean isAccountNonLocked() {
         return true;
     }
 
     @Override
+    @JsonIgnore
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
+//    public boolean isDelete(){return true;}
+
     @Override
+    @JsonIgnore
     public boolean isEnabled() {
         return true;
     }
@@ -89,9 +119,11 @@ public class User implements UserDetails {
     }
     public void setAuthorities(List<Authority> authorities) {this.authorities=authorities;}
 
+    @JsonIgnore
     public String getPassword(){
         return this.password;
     }
+    @JsonProperty
     public void setPassword(String password){
         this.password=password;
     }

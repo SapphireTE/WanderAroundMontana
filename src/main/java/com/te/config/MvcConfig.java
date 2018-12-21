@@ -1,6 +1,7 @@
 package com.te.config;
 
 import com.te.config.viewresolver.JsonViewResolver;
+import com.te.extend.JsonViewHttpMessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -68,7 +69,7 @@ public class MvcConfig implements WebMvcConfigurer {
 
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters){
-        MappingJackson2HttpMessageConverter jsonViewHttpMessageConverter = new MappingJackson2HttpMessageConverter();
+        JsonViewHttpMessageConverter jsonViewHttpMessageConverter = new JsonViewHttpMessageConverter();
         ResourceHttpMessageConverter resourceHttpMessageConverter = new ResourceHttpMessageConverter();
         converters.add(jsonViewHttpMessageConverter);
         converters.add(resourceHttpMessageConverter);

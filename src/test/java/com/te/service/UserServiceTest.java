@@ -21,9 +21,10 @@ import java.util.List;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
 
 @WebAppConfiguration
-@ContextConfiguration(classes = {AppConfig.class})
+@ContextConfiguration(classes = {AppConfig.class}) //in web.wml
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles("unit")
 public class UserServiceTest {
@@ -45,6 +46,7 @@ public class UserServiceTest {
         expectedResult.setPassword("123456");
         userRepository.save(expectedResult);
         User actualResult=userService.findByUsernameIgnoreCase(expectedResult.getUsername());
+        assertNotNull(actualResult);
         assertEquals(expectedResult.getId(), actualResult.getId());
     }
 

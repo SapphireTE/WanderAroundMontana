@@ -25,9 +25,9 @@ import java.io.IOException;
 public class AppConfig {
     @Autowired
     private Environment environment;
-    private final Logger logger= LoggerFactory.getLogger(getClass());
+    private final Logger logger= LoggerFactory.getLogger(getClass()); //log 4j
 
-    @Bean(name="applicationProperties")
+    @Bean(name="applicationProperties") //plugin @Bean in
     public PropertiesFactoryBean getDbProperties(){
         PropertiesFactoryBean bean=new PropertiesFactoryBean();
         String profile=environment.getActiveProfiles()[0];

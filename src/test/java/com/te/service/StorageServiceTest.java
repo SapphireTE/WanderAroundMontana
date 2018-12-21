@@ -74,16 +74,23 @@ public class StorageServiceTest {
         storageService.putObject(key,file);
         verify(client,times(1)).putObject("mt.project",key,file);
         String key2=null;
-        storageService.putObject(key2,file);
-        verify(client,times(1)).putObject("mt.project",key2,file);
+        storageService.putObject(key2,file); // 0 time
+        verify(client,times(1)).putObject("mt.project",key,file);
+
+        String key3="testKey3";
+        storageService.putObject(key3,file);
+        verify(client,times(1)).putObject("mt.project",key3,file);
     }
 
+    @Test
     public void getObjectTest(){
         String s3key="hhhh";
-        File file=new File("/Users/tsai_te/Desktop/testjpg.png");
-        String bucket="mt.project";
-        storageService.putObject(s3key,file);
-        assertTrue(false);
+        File file=new File("/Users/tsai_te/Desktop/testjpg.png"); //setup:create test data
+//        String bucket="mt.project";
+//        String key4="testKey";
+        storageService.getObject(s3key,file);
+        verify(client,times(1)).getObject("mt.project",s3key); //??????
+//        assertTrue(false);
     }
 
 }

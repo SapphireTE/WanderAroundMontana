@@ -27,17 +27,17 @@ import java.util.Properties;
 public class DataSourceConfig {
     private final Logger logger= LoggerFactory.getLogger(getClass());
 
-    @Value("#{applicationProperties['database.dataSourceClassName']}")
+    @Value("#{applicationProperties['database.dataSourceClassName']}") //"#{} is a spring expression
     private String driverClassName;
 
     @Value("#{applicationProperties['database.serverName']}")
     private String databaseUrl;
 
     @Value("#{applicationProperties['database.username']}")
-    private String databaseUsername;
+    private String databaseUsername="";
 
     @Value("#{applicationProperties['database.password']}")
-    private String databasePassword;
+    private String databasePassword="";
 
 
 

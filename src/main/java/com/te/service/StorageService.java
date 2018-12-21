@@ -30,10 +30,22 @@ public class StorageService {
     }
 
     public void putObject(String S3key, File file){
-        s3.putObject(bucket,S3key,file);
+        if(S3key!=null){
+            s3.putObject(bucket,S3key,file);
+        }
     }
 
     public void putObject(String bucket, String S3key, File file){
         s3.putObject(bucket, S3key, file);
+    }
+
+    public void getObject(String S3key, File file){
+        if(S3key !=null){
+            s3.getObject(bucket,S3key);
+        }
+    }
+
+    public void getObject(String bucket, String S3key, File file){
+        s3.putObject(bucket,S3key,file);
     }
 }
