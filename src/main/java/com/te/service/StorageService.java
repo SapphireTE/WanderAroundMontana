@@ -14,7 +14,7 @@ public class StorageService {
     @Value("#{applicationProperties['amazon.s3.url']}")
     private String cdnUrl;
 
-    public StorageService(AmazonS3 s3){
+    public StorageService(AmazonS3 s3){ //constructor
         this.s3=s3;
     }
 

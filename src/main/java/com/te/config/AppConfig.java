@@ -4,6 +4,9 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.sqs.AmazonSQS;
+import com.amazonaws.services.sqs.AmazonSQSClientBuilder;
+import com.te.service.MessageService;
 import com.te.service.StorageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,5 +53,12 @@ public class AppConfig {
 //        storageService.setBucket(beanFactory.getObject().getProperty(propertyKey));
         storageService.setBucket("mt.project");
         return storageService;
+    }
+
+    //todo build a amazon sqs bean
+    @Bean
+    public AmazonSQS getAmazonSQS(){
+        AmazonSQS amazonSQS= AmazonSQSClientBuilder.standard().withCredentials(new DefaultAWSCredentialsProviderChain()).build();
+        return amazonSQS;
     }
 }
