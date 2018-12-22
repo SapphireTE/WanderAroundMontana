@@ -55,11 +55,11 @@ public class UserController extends BaseController {
 //    }
 
     @RequestMapping(value = "", method = RequestMethod.GET, params = {"username"})
-    public User findByUsername(@RequestParam(value = "username") String Username, Device device) {
+    public User findByUsername(@RequestParam(value = "username") String username, Device device) {
         setJsonViewClass(JsView.User.class); //what situation or role
         disableMapperFeature_DEFAULT_VIEW_INCLUSION();
-        logger.debug("parameter name is:" + Username);
-        User result = userService.findByUsernameIgnoreCase(Username);//return userService.findBy(new Car(carId)).get();
+        logger.debug("parameter name is:" + username);
+        User result = userService.findByUsernameIgnoreCase(username);//return userService.findBy(new Car(carId)).get();
         return result;
 
 //        try{
@@ -73,9 +73,9 @@ public class UserController extends BaseController {
 
 
     @RequestMapping(value = "", method = RequestMethod.GET, params = {"first_name"})
-    public User findByFirstName(@RequestParam("first_name") String FirstName) {
-        logger.debug("parameter name is:" + FirstName);
-        User result = userService.findByFirstNameIgnoreCase(FirstName);
+    public User findByFirstName(@RequestParam("first_name") String firstName) {
+        logger.debug("parameter name is:" + firstName);
+        User result = userService.findByFirstNameIgnoreCase(firstName);
         return result;
     }
 

@@ -22,8 +22,8 @@ public class UserService {
 
     private BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
 
-    public User findByUsernameIgnoreCase(String name){
-        User result=userRepository.findByUsernameIgnoreCase(name);
+    public User findByUsernameIgnoreCase(String username){
+        User result=userRepository.findByUsernameIgnoreCase(username);
         return result;
     }
 
