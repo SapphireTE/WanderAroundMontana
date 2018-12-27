@@ -1,6 +1,11 @@
 package com.te.domain;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
@@ -9,8 +14,8 @@ import static javax.persistence.GenerationType.SEQUENCE;
 public class OutdoorRecreation {
 
     @Id
-    @GeneratedValue(strategy = SEQUENCE, generator = "outdoorrecreations_id_seq")
-    @SequenceGenerator(name="outdoorrecreations_id_seq", sequenceName = "outdoorrecreations_id_seq", allocationSize=1)
+    @GeneratedValue(strategy = SEQUENCE, generator = "outdoorRecreations_id_seq")
+    @SequenceGenerator(name="outdoorRecreations_id_seq", sequenceName = "outdoorRecreations_id_seq", allocationSize=1)
     public Long id;
 
     @Column(name="category")
@@ -27,6 +32,10 @@ public class OutdoorRecreation {
 
     @Column(name="distance")
     public Double distance;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "outdoorRecreation",cascade = CascadeType.ALL)
+    @JsonView({JsView.Admin.class})
+    private List<Image> images;
 
     public Long getId(){
         return this.id;
@@ -66,4 +75,7 @@ public class OutdoorRecreation {
     public void setDistant(Double distant){
         this.distance=distant;
     }
+
+    public List<Image> getImages(){return images==null ? new ArrayList<>():images;}
+    public void setImages (List<Image> images){this.images=images;}
 }

@@ -57,14 +57,16 @@ public class AuthorityServiceTest {
         List<Authority> expectedAuthority=authorityService.findAuthoritiesByUser(createUser);
 //        User actualAuthority=authorityService.findAuthoritiesByUser(expectedAuthority.getUser());
         assertEquals(3,expectedAuthority.size());
-
-
-
-
     }
 
 //    @Test
-//    public void addAuthorityTest(){
-
+//    @Transactional
+//    public void deleteAuthorityTest(){
+//        User findByAuthority=new User();
+//        Authority deElevateAuthority=new Authority();
+//        findByAuthority.getId();
+//        userRepository.save(findByAuthority);
+//        Authority actualAuthority=authorityRepository.deleteAuthority();
+//    }
 
 }

@@ -15,9 +15,11 @@ import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
+import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
+import org.springframework.web.servlet.view.XmlViewResolver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,18 +34,35 @@ public class MvcConfig implements WebMvcConfigurer {
         configurer.defaultContentType(MediaType.APPLICATION_JSON);
     }
 
+    @Override
+    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+        configurer.enable();
+    }
+
     @Bean
     public ViewResolver contentNegotiatingViewResolver(ContentNegotiationManager manager){
         ContentNegotiatingViewResolver resolver=new ContentNegotiatingViewResolver();
         resolver.setContentNegotiationManager(manager);
 
-        List<ViewResolver> resolvers = new ArrayList<ViewResolver>();
-        resolvers.add(jsonViewResolver());
-        //resolver.add(xmlViewResolver());
+        List<ViewResolver> viewResolversImpl = new ArrayList<ViewResolver>(); //class type interface list
+        viewResolversImpl.add(jsonViewResolver());
+//        viewResolversImpl.add(xmlViewResolver());
 
-        resolver.setViewResolvers(resolvers);
+        resolver.setViewResolvers(viewResolversImpl);
         return resolver;
     }
+
+//    @Bean
+//    public ViewResolver contentNegotiatingViewResolver(ContentNegotiationManager manager){
+//        ContentNegotiatingViewResolver resolver =new ContentNegotiatingViewResolver();
+//        resolver.setContentNegotiationManager(manager);
+//
+//        List<ViewResolver> viewResolverImpl=new ArrayList<>();
+//        viewResolverImpl.add(new JsonViewResolver());
+//
+//        resolver.setViewResolvers(viewResolverImpl);
+//        return resolver;
+//    }
 
     @Bean(name="multipartResolver")
     public CommonsMultipartResolver getMultipartResolver(){
@@ -66,6 +85,11 @@ public class MvcConfig implements WebMvcConfigurer {
     public ViewResolver jsonViewResolver(){
         return new JsonViewResolver();
     }
+
+//    @Bean
+//    public ViewResolver xmlViewResolver(){
+//        return new XmlViewResolver();
+//    }
 
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters){

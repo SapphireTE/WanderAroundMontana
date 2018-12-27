@@ -28,5 +28,13 @@ public class AuthorityService {
         return authorities;
     }
 
+    @Transactional
+    public Authority deleteAuthority(String role, User user){
+        Authority authority=new Authority();
+        authority.setAuthority(role);
+        authority.setUser(user);
+        return  authorityRepository.save(authority);
+    }
+
 
 }
