@@ -14,7 +14,7 @@
         <flyway.version>5.1.4</flyway.version>
         <java-version>1.8</java-version>
         <org.slf4j-version>1.7.25</org.slf4j-version>
-        <fasterxml-jackson.version>2.9.7</fasterxml-jackson.version>
+        <fasterxml-jackson.version>2.9.8</fasterxml-jackson.version>
         <mockito.version>2.23.4</mockito.version>
     </properties>
 
@@ -151,6 +151,7 @@
             </exclusions>
             <scope>runtime</scope>
         </dependency>
+
         <!--unit test-->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -164,6 +165,7 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+
         <!--json-->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>

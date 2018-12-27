@@ -25,7 +25,7 @@ import java.io.IOException;
 
 @Configuration
 @ComponentScan(basePackages = "com.te", excludeFilters=@ComponentScan.Filter(type= FilterType.REGEX,pattern="com.te.api.*"))
-public class AppConfig {
+public class AppConfig { //scan all project
     @Autowired
     private Environment environment;
     private final Logger logger= LoggerFactory.getLogger(getClass()); //log 4j

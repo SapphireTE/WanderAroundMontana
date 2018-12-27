@@ -1,6 +1,11 @@
 package com.te.domain;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
@@ -9,8 +14,8 @@ import static javax.persistence.GenerationType.SEQUENCE;
 public class CulturalInheritance {
 
     @Id
-    @GeneratedValue(strategy = SEQUENCE, generator = "culturalinheritances_id_seq")
-    @SequenceGenerator(name="culturalinheritances_id_seq", sequenceName = "culturalinheritances_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = SEQUENCE, generator = "culturalInheritances_id_seq")
+    @SequenceGenerator(name="culturalInheritances_id_seq", sequenceName = "culturalInheritances_id_seq", allocationSize = 1)
     public Long id;
 
     @Column(name="category")
@@ -21,6 +26,10 @@ public class CulturalInheritance {
 
     @Column(name="historical_scene")
     public String historicalScene;
+
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JsonView({JsView.Admin.class})
+    private List<Image> images;
 
     public Long getId(){
         return this.id;
@@ -47,4 +56,8 @@ public class CulturalInheritance {
     public void setHistoricalScene(String historicalScene){
         this.historicalScene=historicalScene;
     }
+
+    public List<Image> images(){return images==null ? new ArrayList<>():images;}
+    public void setImages (List<Image> images) {this.images=images;}
+
 }

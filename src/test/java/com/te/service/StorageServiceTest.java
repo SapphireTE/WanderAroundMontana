@@ -50,9 +50,6 @@ public class StorageServiceTest {
         validateMockitoUsage();
     }
 
-//    @Autowired
-//    private StorageService storageService;
-
     @Test
     public void putObjectTest (){
 //        AmazonS3 s3=AmazonS3ClientBuilder.standard().withRegion("us-east-1").build();
@@ -72,7 +69,7 @@ public class StorageServiceTest {
         File file=new File("/Users/tsai_te/Desktop/testjpg.png");
         String bucket="mt.project";
         storageService.putObject(key,file);
-        verify(client,times(1)).putObject("mt.project",key,file);
+        verify(client,times(1)).putObject("mt.project",key,file); //??????
         String key2=null;
         storageService.putObject(key2,file); // 0 time
         verify(client,times(1)).putObject("mt.project",key,file);

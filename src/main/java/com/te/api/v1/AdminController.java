@@ -30,11 +30,17 @@ public class AdminController {
 
     @RequestMapping(value = "/users/{Id}", method= RequestMethod.GET)
     public User findById (@PathVariable("Id") Long Id){ //???
-        logger.debug("User_ID:"+Id); //??
+        logger.debug("user path variable is:"+Id); //??
         User result=userService.findById(Id);
         return result;
     }
 
     //todo de-elevate role
+    @RequestMapping(value="/users/{Id}", method=RequestMethod.DELETE)
+    public User findAuthorityByUser (@PathVariable("Id") Long Id){
+        logger.debug("User path variable is:"+Id);
+        User result=userService.findById(Id);
+        return result;
+    }
 
 }

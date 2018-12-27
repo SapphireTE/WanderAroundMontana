@@ -1,6 +1,11 @@
 package com.te.domain;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
@@ -21,6 +26,10 @@ public class Scenery {
 
     @Column(name="national_park")
     public String nationalParks;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "scenery",cascade = CascadeType.ALL)
+    @JsonView({JsView.Admin.class})
+    private List<Image> images;
 
     public Long getId(){
         return this.id;
@@ -46,4 +55,8 @@ public class Scenery {
     public void setNationalParks(String nationParks){
         this.nationalParks=nationParks;
     }
+
+    public List<Image> getImages(){return images==null ? new ArrayList<>():images;}
+    public void setImages (List<Image> images){this.images=images;}
+
 }
