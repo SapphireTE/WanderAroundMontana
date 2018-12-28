@@ -16,14 +16,19 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 @RestController
-@RequestMapping(value="/api/users")
+//@Controller
+//@RequestBody
+@RequestMapping(value={"/api/users","/api/user"}) //only comes to users, 请求的 mapping
 public class UserController extends BaseController {
-    private final Logger logger = LoggerFactory.getLogger(getClass());
+    private final Logger logger = LoggerFactory.getLogger(getClass()); //getClass() is present class name, which is UserController
 
     @Autowired
     private UserService userService;
@@ -33,6 +38,12 @@ public class UserController extends BaseController {
 
     @Autowired
     private AuthenticationManager authenticationManager;
+
+    @RequestMapping(method = RequestMethod.GET)
+    public List<User> getUserList(){
+        logger.debug("list users");
+        return new ArrayList<User>();
+    }
 
     @RequestMapping(value = "/{Id}", method = RequestMethod.GET)
     public User findById(@PathVariable("Id") Long Id) {

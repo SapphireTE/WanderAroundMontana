@@ -17,10 +17,10 @@ public interface UserRepository extends CrudRepository<User, Long> { // -- inter
 
     List<User> findAll();
 
-    Optional<User> deleteUserByUsername(String user);
+//    Optional<User> deleteUserByUsername(String user);
 
-//    @Query("Select c from #{#entityName} c LEFT JOIN FETCH c.images")
-//    List<User> findAllWithimages();
+    @Query("Select c from #{#entityName} c LEFT JOIN FETCH c.images")
+    List<User> findAllWithImages();
 
 //    Optional<User> find
 }

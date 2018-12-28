@@ -27,7 +27,7 @@ public class CulturalInheritance {
     @Column(name="historical_scene")
     public String historicalScene;
 
-    @ManyToOne(fetch=FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "culturalInheritance",cascade = CascadeType.ALL)
     @JsonView({JsView.Admin.class})
     private List<Image> images;
 

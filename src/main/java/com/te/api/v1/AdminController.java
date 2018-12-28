@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Optional;
 
 @RestController //???
-@RequestMapping(value="/api/admin") //???????
+@RequestMapping(value={"/api/admin"}) //???????
 public class AdminController {
     private final Logger logger = LoggerFactory.getLogger(getClass()); //???
 
