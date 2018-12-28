@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value="/api/scereries")
+@RequestMapping(value={"/api/scereries"})
 public class SceneryController {
     private final Logger logger= LoggerFactory.getLogger(getClass());
 
