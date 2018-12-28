@@ -11,10 +11,10 @@ import org.springframework.stereotype.Service;
 public class MessageService {
     private AmazonSQS sqs;
     private String queueUrl;
-    @Value("#{applicationProperties['jms.queue.name']}")
-    private String queueName;
+//    @Value("#{applicationProperties['jms.queue.name']}")
+//    private String queueName;
 
-    public MessageService(@Autowired AmazonSQS sqs){
+    public MessageService(@Autowired AmazonSQS sqs,@Value("#{applicationProperties['jms.queue.name']}") String queueName){
 //        AmazonSQS sqs = AmazonSQSClientBuilder.defaultClient();
         this.sqs=sqs;
         this.queueUrl = getQueueUrl(queueName);
