@@ -17,7 +17,6 @@ import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.web.WebAppConfiguration;
-import sun.plugin2.message.Message;
 
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.validateMockitoUsage;
@@ -48,10 +47,10 @@ public class MessageServiceTest {
 
     @Test
     public void sendMessageTest(){
-        String message="hello, ryo";
-        String email="haha";
-        messageService.sendMessage(message);
-        verify(client,times(1)).sendMessage(message,email);
+        String messageBody="hello, ryo";
+        String QueueUrl="haha";
+        messageService.sendMessage(messageBody);
+        verify(client,times(1)).sendMessage(messageBody,QueueUrl);
     }
 }
 

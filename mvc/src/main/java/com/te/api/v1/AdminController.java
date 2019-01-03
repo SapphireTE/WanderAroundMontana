@@ -1,7 +1,10 @@
 package com.te.api.v1;
 
+import com.te.domain.Authority;
 import com.te.domain.User;
 import com.te.extend.security.JwtTokenUtil;
+import com.te.repository.AuthorityRepository;
+import com.te.service.AuthorityService;
 import com.te.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController //???
@@ -21,6 +25,12 @@ public class AdminController {
 
     @Autowired
     private UserService userService; //??
+
+    @Autowired
+    private AuthorityService authorityService;
+
+    @Autowired
+    private AuthorityRepository authorityRepository;
 //
 //    @Autowired
 //    private JwtTokenUtil jwtTokenUtil;
@@ -29,9 +39,16 @@ public class AdminController {
 //    private AuthenticationManager authenticationManager;
 
     @RequestMapping(value = "/users/{Id}", method= RequestMethod.GET)
-    public User findById (@PathVariable("Id") Long Id){ //???
+    public User elevateAdminRole (@PathVariable("Id") Long Id){ //???
         logger.debug("user path variable is:"+Id); //??
-        User result=userService.findById(Id);
+        User result=userService.findBy(Id);
+        //TODO create admin authority object
+        //setUser to selected user
+        //save authority
+        Authority authority=new Authority();
+        authority.setAuthority("ADMIN");
+        authority.setUser(result);
+        authorityRepository.save(authority);
         return result;
     }
 
@@ -39,7 +56,11 @@ public class AdminController {
     @RequestMapping(value="/users/{Id}", method=RequestMethod.DELETE)
     public User findAuthorityByUser (@PathVariable("Id") Long Id){
         logger.debug("User path variable is:"+Id);
-        User result=userService.findById(Id);
+        User result=userService.findBy(Id);
+        Authority authority=new Authority();
+        authority.setAuthority("REGISTERED_USER");
+        authority.setUser(result);
+        authorityRepository.save(authority);
         return result;
     }
 

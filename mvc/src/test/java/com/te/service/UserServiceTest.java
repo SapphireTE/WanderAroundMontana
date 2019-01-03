@@ -69,7 +69,7 @@ public class UserServiceTest {
         newUser.setEmail("tete@hotmail.com");
         newUser.setPassword(password);
         User expectedUser=userService.createUser(newUser);
-        User actualUser=userService.findById(newUser.getId());
+        User actualUser=userService.findBy(newUser.getId());
 //        authority.setAuthority("REGISTERED_USER_ROLE");
         List<Authority> actualAuthorities=authorityRepository.findAuthoritiesByUser(expectedUser);
 

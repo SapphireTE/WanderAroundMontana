@@ -17,6 +17,8 @@ public interface UserRepository extends CrudRepository<User, Long> { // -- inter
 
     List<User> findAll();
 
+    List<User> findByLastName (String lastName);
+
 //    Optional<User> deleteUserByUsername(String user);
 
 //    @Query("Select c from #{#entityName} c LEFT JOIN FETCH c.images")
