@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.management.relation.Role;
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -27,16 +28,24 @@ public class UserService {
         return result;
     }
 
-    public User findById(Long Id){
-        Optional<User> result=userRepository.findById(Id);
-        User user = result.get();
-        return user;
+//    public User findById(Long Id){
+//        Optional<User> result=userRepository.findById(Id);
+//        User user = result.get();
+//        return user;
+//    }
+
+    public User findBy(Long Id){
+        return userRepository.findById(Id).get();
+    }
+
+    public List<User> findAll(){
+        return userRepository.findAll();
     }
 
     @Transactional
     public User createUser(User newUser){
 //        Authority addAuthority=new Authority();
-        String encodedPass=encoder.encode(newUser.getPassword());
+        String encodedPass=encoder.encode(newUser.getPassword()); //????
         newUser.setPassword(encodedPass);
         User result=userRepository.save(newUser);
         authorityService.addAuthority("ROLE_REGISTERED_USER",result);
@@ -51,10 +60,15 @@ public class UserService {
 
 
 
-    public User findByFirstNameIgnoreCase(String FirstName){
-        Optional<User> result=userRepository.findByFirstNameIgnoreCase(FirstName);
+    public User findByFirstNameIgnoreCase(String firstName){
+        Optional<User> result=userRepository.findByFirstNameIgnoreCase(firstName);
         User user=result.get();
         return user;
+    }
+
+    public List<User> findByLastName (String lastName){
+        List<User> result=userRepository.findByLastName(lastName);
+        return result;
     }
 
 //    public User findByUsername(String name){

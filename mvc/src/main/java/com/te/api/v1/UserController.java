@@ -45,10 +45,17 @@ public class UserController extends BaseController {
         return new ArrayList<User>();
     }
 
+    @RequestMapping(value = "/{Id}/user/{/userId}",method = RequestMethod.GET)
+    public User findByUserId(@PathVariable("Id") Long Id, @PathVariable("userId") Long userId){
+        logger.debug("user path variable is:"+Id);
+        logger.debug("user path variable is:"+userId);
+        return userService.findBy(userId);
+    }
+
     @RequestMapping(value = "/{Id}", method = RequestMethod.GET)
     public User findById(@PathVariable("Id") Long Id) {
         logger.debug("user path variable is:" + Id);
-        User result = userService.findById(Id);
+        User result = userService.findBy(Id);
         return result;
 
 //        try{
@@ -81,8 +88,6 @@ public class UserController extends BaseController {
 //        }
     }
 
-
-
     @RequestMapping(value = "", method = RequestMethod.GET, params = {"first_name"})
     public User findByFirstName(@RequestParam("first_name") String firstName) {
         logger.debug("parameter name is:" + firstName);
@@ -93,6 +98,12 @@ public class UserController extends BaseController {
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
     public User signup(@RequestBody User user) {
         User result = userService.createUser(user);
+        return result;
+    }
+
+    @RequestMapping(value="/signUp", method=RequestMethod.POST)
+    public User signUp(@RequestBody User user){
+        User result=userService.createUser(user);
         return result;
     }
 
@@ -121,7 +132,13 @@ public class UserController extends BaseController {
         }
     }
 
-
+    @RequestMapping(value="",method = RequestMethod.GET,params = {"lastName"})
+    public List<User> findByLastName (@RequestParam("lastName") String lastName){
+        logger.debug("parameter name is:"+lastName);
+        List<User> result=userService.findByLastName(lastName);
+        return result;
+        //userService.findBy(new User(Id)).get();
+    }
 
 }
 
