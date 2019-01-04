@@ -60,10 +60,10 @@ public class UserService {
 
 
 
-    public User findByFirstNameIgnoreCase(String firstName){
-        Optional<User> result=userRepository.findByFirstNameIgnoreCase(firstName);
-        User user=result.get();
-        return user;
+    public List<User> findByFirstNameIgnoreCase(String firstName){
+        List<User> result=userRepository.findByFirstNameIgnoreCase(firstName);
+//        List<User> user=result.get();
+        return result;
     }
 
     public List<User> findByLastName (String lastName){
