@@ -18,8 +18,8 @@ public class MessageController {
 
     @RequestMapping(value="/{Id}", method = RequestMethod.POST)
     public Boolean postFakeMessage (@PathVariable("Id") Long messageId){
-        logger.debug("Receive a message Id::" +messageId);
-        messageService.sendMessage(messageId.toString());
+        logger.debug("Receive a message Id:" +messageId);
+        messageService.sendMessage(messageId.toString(),1);
         return Boolean.TRUE;
     }
 
