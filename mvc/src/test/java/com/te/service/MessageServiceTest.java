@@ -45,13 +45,13 @@ public class MessageServiceTest {
         validateMockitoUsage();
     }
 
-//    @Test
-//    public void sendMessageTest(){
-//        String messageBody="hello, ryo";
-//        String QueueUrl="haha";
-//        messageService.sendMessage(messageBody);
-//        verify(client,times(1)).sendMessage(messageBody,QueueUrl);
-//    }
+    @Test
+    public void sendMessageTest(){
+        String messageBody="hello, ryo";
+        String QueueUrl="haha";
+//        messageService.sendMessage(QueueUrl);
+        verify(client,times(1)).sendMessage(messageBody,QueueUrl);
+    }
 }
 
 

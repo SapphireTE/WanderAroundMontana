@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import javax.management.relation.Role;
 import javax.transaction.Transactional;
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -70,6 +72,11 @@ public class UserService {
         List<User> result=userRepository.findByLastName(lastName);
         return result;
     }
+
+//    public User setDateOfBirth (LocalDate dateOfBirth){
+//        User result=userRepository.setDateOfBirth(dateOfBirth);
+//        return result;
+//    }
 
 //    public User findByUsername(String name){
 //        User result=userRepository.findByUsername(name);

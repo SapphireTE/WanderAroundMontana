@@ -4,6 +4,8 @@ import com.te.domain.User;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +20,8 @@ public interface UserRepository extends CrudRepository<User, Long> { // -- inter
     List<User> findAll();
 
     List<User> findByLastName (String lastName);
+
+//    Optional<User> setDateOfBirth (LocalDate dateOfBirth);
 
 //    Optional<User> deleteUserByUsername(String user);
 

@@ -8,6 +8,7 @@ import com.te.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mobile.device.Device;
@@ -19,7 +20,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -140,7 +143,15 @@ public class UserController extends BaseController {
         //userService.findBy(new User(Id)).get();
     }
 
+    //todo set time api
 
+
+//    @RequestMapping(value="",method=RequestMethod.POST,params = {"dataOfBirth"})
+//    public User setDateOfBirth (@DateTimeFormat(pattern="MM/DD/YYYY") LocalDate dateOfBirth){
+//        logger.debug("parameter name is:"+dateOfBirth);
+//        User result=userService.setDateOfBirth(dateOfBirth);
+//        return result;
+//    }
 
 }
 
