@@ -39,6 +39,16 @@ public class SecurityConfig {
 //                .and()
 //                .formLogin();
 //    }
+
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{ //method
+        auth.inMemoryAuthentication().withUser("user1").password("{noop}password").roles("REGISTERED_USER");
+    }
+
+    protected void configure(HttpSecurity http) throws Exception{
+        http.csrf().disable().authorizeRequests().anyRequest().authenticated().and().formLogin();
+    }
+
     //step2
     //@Autowired
 //    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
