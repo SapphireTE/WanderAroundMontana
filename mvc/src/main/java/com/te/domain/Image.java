@@ -20,16 +20,20 @@ public class Image {
     private String imageName;
 
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="sceneryImage_id")
+    @JoinColumn(name="scenery_id")
     private Scenery scenery;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="outdoorRecreationImage_id")
+    @JoinColumn(name="outdoorRecreation_id")
     private OutdoorRecreation outdoorRecreation;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="culturalInheritanceImage_id")
+    @JoinColumn(name="culturalInheritance_id")
     private CulturalInheritance culturalInheritance;
+
+    @OneToOne
+    @JoinColumn(name="user_id")
+    private User user;
 
     public Long getId(){return this.Id;}
 
