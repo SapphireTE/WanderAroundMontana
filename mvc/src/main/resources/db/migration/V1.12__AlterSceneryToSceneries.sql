@@ -1,1 +1,1 @@
-alter table Scenery rename to Sceneries;
+-- alter table Scenery rename to Sceneries;
