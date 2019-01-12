@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -69,6 +71,8 @@ public class DataSourceConfig {
     }
 
     @Bean(name="entityManagerFactory") //read
+    @DependsOn("flyway")
+    @Profile({"dev","test","stage","prod"})
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean() {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(getDataSource());
@@ -79,7 +83,27 @@ public class DataSourceConfig {
         props.put("hibernate.hbm2ddl.auto", "validate");
 //        props.put("hibernate.physical_naming_strategy", "com.overture.family.extend.hibernate.ImprovedNamingStrategy")
         props.put("hibernate.connection.charSet","UTF-8");
-        props.put("hibernate.show_sql","true");
+        props.put("hibernate.show_sql","false");
+//        props.put("")
+//            <property name="hibernate.ejb.interceptor" value="com.overture.family.repository.jpa.DBNullsFirstLastInteceptor"/>
+        factoryBean.setJpaProperties(props);
+        return factoryBean;
+    }
+
+    @Bean(name="entityManagerFactory") //read
+    @DependsOn("flyway")
+    @Profile("unit")
+    public LocalContainerEntityManagerFactoryBean entityUnitManagerFactoryBean() {
+        LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
+        factoryBean.setDataSource(getDataSource());
+        factoryBean.setPackagesToScan(new String[] { "com.te.domain","com.te.repository" });
+        factoryBean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
+        Properties props = new Properties();
+        props.put("hibernate.dialect", "org.hibernate.spatial.dialect.postgis.PostgisDialect");
+        props.put("hibernate.hbm2ddl.auto", "validate");
+//        props.put("hibernate.physical_naming_strategy", "com.overture.family.extend.hibernate.ImprovedNamingStrategy")
+        props.put("hibernate.connection.charSet","UTF-8");
+        props.put("hibernate.show_sql","true"); //"true" prints a particular
 //        props.put("")
 
 
