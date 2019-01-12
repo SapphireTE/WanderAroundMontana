@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 
@@ -44,7 +45,7 @@ public class User implements UserDetails {
 //    private String confirmPassword;
 
     @Column(name="date_of_birth")
-    private Instant dateOfBirth;
+    private LocalDate dateOfBirth;
 
 //    @Column(name="is_delete")
 //    private Boolean isDelete;
@@ -128,10 +129,10 @@ public class User implements UserDetails {
         this.password=password;
     }
 
-    public Instant getDateOfBirth(){
+    public LocalDate getDateOfBirth(){
         return this.dateOfBirth;
     }
-    public void setDateOfBirth(Instant dateOfBirth){
+    public void setDateOfBirth(LocalDate dateOfBirth){
         this.dateOfBirth=dateOfBirth;
     }
 
