@@ -71,7 +71,7 @@ public class DataSourceConfig {
     }
 
     @Bean(name="entityManagerFactory") //read
-    @DependsOn("flyway")
+//    @DependsOn("flyway")
     @Profile({"dev","test","stage","prod"})
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean() {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
@@ -91,7 +91,7 @@ public class DataSourceConfig {
     }
 
     @Bean(name="entityManagerFactory") //read
-    @DependsOn("flyway")
+//    @DependsOn("flyway")
     @Profile("unit")
     public LocalContainerEntityManagerFactoryBean entityUnitManagerFactoryBean() {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();

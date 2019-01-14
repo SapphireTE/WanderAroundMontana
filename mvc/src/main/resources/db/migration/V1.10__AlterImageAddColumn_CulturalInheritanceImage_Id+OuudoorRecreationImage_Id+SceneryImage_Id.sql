@@ -6,6 +6,3 @@ alter table Images
 
 alter table Images
    add column sceneryImage_id bigint not null;
---
--- Alter table Outdoor_recreations
---   Add column distance double precision not NULL;
