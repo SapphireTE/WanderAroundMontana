@@ -6,6 +6,7 @@ import com.te.repository.SceneryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -13,8 +14,8 @@ public class SceneryService {
     @Autowired
     private SceneryRepository sceneryRepository;
 
-    public Scenery findByCategory(String category){
-        Scenery result= sceneryRepository.findByCategoryIgnoreCase(category);
+    public List<Scenery> findByCategory(String category){
+        List<Scenery> result= sceneryRepository.findByCategoryIgnoreCase(category);
         return result;
     }
 
@@ -29,19 +30,19 @@ public class SceneryService {
 //        return result;
 //    }
 
-    public Scenery findByNature(String nature){
-        Scenery result=sceneryRepository.findByNature(nature);
-//        Scenery nature = result.get();
-        return result;
-    }
+//    public List<Scenery> findByNature(String nature){
+//        List<Scenery> result=sceneryRepository.findByNature(nature);
+////        Scenery nature = result.get();
+//        return result;
+//    }
 
 //    public Scenery findById (Long Id){
 //        Scenery result=sceneryRepository.findById(Id);
 //        return result;
 //    }
 
-    public Scenery findByNationalParks(String nationalParks){
-        Scenery result=sceneryRepository.findByNationalParks(nationalParks);
-        return result;
-    }
+//    public List<Scenery> findByNationalParks(String nationalParks){
+//        List<Scenery> result=sceneryRepository.findByNationalParks(nationalParks);
+//        return result;
+//    }
 }

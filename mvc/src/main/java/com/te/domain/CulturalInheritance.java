@@ -21,11 +21,11 @@ public class CulturalInheritance {
     @Column(name="category")
     public String category;
 
-    @Column(name="museum")
-    public String museum;
-
-    @Column(name="historical_scene")
-    public String historicalScene;
+//    @Column(name="museum")
+//    public String museum;
+//
+//    @Column(name="historical_scene")
+//    public String historicalScene;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "culturalInheritance",cascade = CascadeType.ALL)
     @JsonView({JsView.Admin.class})
@@ -42,20 +42,19 @@ public class CulturalInheritance {
         this.category=category;
     }
 
-    public String getMuseum(){
-        return this.museum;
-    }
-    public void setMuseum(String museum){
-        this.museum=museum;
-    }
-
-    public String getHistoricalScene(){
-        return this.historicalScene;
-    }
-
-    public void setHistoricalScene(String historicalScene){
-        this.historicalScene=historicalScene;
-    }
+//    public String getMuseum(){
+//        return this.museum;
+//    }
+//    public void setMuseum(String museum){
+//        this.museum=museum;
+//    }
+//
+//    public String getHistoricalScene(){
+//        return this.historicalScene;
+//    }
+//    public void setHistoricalScene(String historicalScene){
+//        this.historicalScene=historicalScene;
+//    }
 
     public List<Image> images(){return images==null ? new ArrayList<>():images;}
     public void setImages (List<Image> images) {this.images=images;}

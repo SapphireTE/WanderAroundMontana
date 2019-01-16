@@ -52,13 +52,13 @@ public class UserController extends BaseController {
     public User findByUserId(@PathVariable("Id") Long Id, @PathVariable("userId") Long userId){
         logger.debug("user path variable is:"+Id);
         logger.debug("user path variable is:"+userId);
-        return userService.findBy(userId);
+        return userService.findById(userId);
     }
 
     @RequestMapping(value = "/{Id}", method = RequestMethod.GET)
     public User findById(@PathVariable("Id") Long Id) {
         logger.debug("user path variable is:" + Id);
-        User result = userService.findBy(Id);
+        User result = userService.findById(Id);
         return result;
 
 //        try{

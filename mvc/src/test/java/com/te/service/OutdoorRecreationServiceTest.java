@@ -13,6 +13,8 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import javax.transaction.Transactional;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 @WebAppConfiguration
@@ -30,13 +32,24 @@ public class OutdoorRecreationServiceTest {
     @Transactional
     public void findByCategoryTest(){
         OutdoorRecreation expectedResult=new OutdoorRecreation();
-        expectedResult.setCategory("river");
-        expectedResult.setHiking("hiking");
-        expectedResult.setFishing("m");
-        expectedResult.setSkiing("resorts");
-        expectedResult.setDistant(1.11);
+        expectedResult.setCategory("Hiking");
+//        expectedResult.setHiking("hiking");
+//        expectedResult.setFishing("m");
+//        expectedResult.setSkiing("resorts");
+//        expectedResult.setDistant(1.11);
         outdoorRecreationRepository.save(expectedResult);
-        OutdoorRecreation actualResult=outdoorRecreationService.findByCategory (expectedResult.getCategory());
-        assertEquals(expectedResult.getId(), actualResult.getId());
+        List<OutdoorRecreation> actualResult=outdoorRecreationService.findByCategory (expectedResult.getCategory());
+        assertEquals(1, actualResult.size());
+
+//        OutdoorRecreation expectedResult2=new OutdoorRecreation();
+//        expectedResult2.setCategory("Fishing");
+//        outdoorRecreationRepository.save(expectedResult2);
+//        List<OutdoorRecreation> actualResult2=outdoorRecreationService.findByCategory(expectedResult2.getCategory());
+//        assertEquals(2,actualResult2.size());
     }
+
+//    public void findByIdTest(){
+//        OutdoorRecreation expectedResult=new OutdoorRecreation();
+//        expectedResult.
+//    }
 }

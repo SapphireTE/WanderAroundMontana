@@ -13,6 +13,8 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import javax.transaction.Transactional;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 @WebAppConfiguration
@@ -30,11 +32,25 @@ public class SceneryServiceTest {
     @Transactional
     public void findByCategoryTest(){
         Scenery expectedResult=new Scenery();
-        expectedResult.setCategory("river");
-        expectedResult.setNature("hiking");
-        expectedResult.setNationalParks("m");
+        expectedResult.setCategory("nature");
         sceneryRepository.save(expectedResult);
-        Scenery actualResult=sceneryService.findByCategory(expectedResult.getCategory());
-        assertEquals(expectedResult.getId(), actualResult.getId());
+        List<Scenery> actualResult=sceneryService.findByCategory(expectedResult.getCategory());
+        assertEquals(1, actualResult.size());
+
+        Scenery expectedResult2=new Scenery();
+        expectedResult2.setCategory("national_park");
+        sceneryRepository.save(expectedResult2);
+        List<Scenery> actualResult2=sceneryService.findByCategory(expectedResult2.getCategory());
+        assertEquals(2,actualResult2.size());
+    }
+
+    @Test
+    @Transactional
+    public void findByIdTest(){
+        Scenery expectedResult=new Scenery();
+        expectedResult.setCategory("mountain");
+        sceneryRepository.save(expectedResult);
+        Scenery actualResult=sceneryService.findById(expectedResult.getId());
+        assertEquals(expectedResult.getId(),actualResult.getId());
     }
 }
