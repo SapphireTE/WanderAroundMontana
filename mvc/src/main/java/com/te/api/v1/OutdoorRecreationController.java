@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value="/api/outdoor")
 public class OutdoorRecreationController {
@@ -28,11 +30,12 @@ public class OutdoorRecreationController {
 //        return result;
 //    }
 
-    @RequestMapping(value="",method = RequestMethod.GET)
-    public OutdoorRecreation findByCategory (@RequestParam("category") String category){
+    @RequestMapping(value="",method = RequestMethod.GET,params = {"category"})
+    public List<OutdoorRecreation> findByCategory (@RequestParam("category") String category){
         logger.debug("outdoor_recreation paramter variable is:" +category);//???????
-//        OutdoorRecreation result=outdoorRecreationService.findByCategory(category);
-        return new OutdoorRecreation();
+        List<OutdoorRecreation> result=outdoorRecreationService.findByCategory(category);
+        return result;
+//        return new OutdoorRecreation();
     }
 
 //    @RequestMapping(value="",method = RequestMethod.GET)

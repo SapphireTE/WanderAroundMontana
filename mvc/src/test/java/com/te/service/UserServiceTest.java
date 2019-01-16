@@ -52,6 +52,63 @@ public class UserServiceTest {
 
     @Test
     @Transactional
+    public void findByUserIdTest(){
+        User expectedUser=new User();
+        expectedUser.setUsername("te");
+        expectedUser.setEmail("te@yahoo.com");
+        expectedUser.setPassword("123456");
+        userRepository.save(expectedUser);
+        User actualUser=userService.findById(expectedUser.getId());
+        assertNotNull(actualUser);
+        assertEquals(expectedUser.getId(),actualUser.getId());
+    }
+
+    @Test
+    @Transactional
+    public void findByFirstNameTest(){
+        User expectedUser=new User();
+        expectedUser.setFirstName("te");
+        expectedUser.setUsername("tsai.te");
+        expectedUser.setEmail("tsai.te@gmail.com");
+        expectedUser.setPassword("123456");
+        userRepository.save(expectedUser);
+        List<User> actualUser=userService.findByFirstNameIgnoreCase(expectedUser.getFirstName());
+        assertEquals(1,actualUser.size());
+
+        User expectedUser2=new User();
+        expectedUser2.setFirstName("te");
+        expectedUser2.setUsername("tsai.te2");
+        expectedUser2.setEmail("tsai.te2@gmail.com");
+        expectedUser2.setPassword("123456");
+        userRepository.save(expectedUser2);
+        List<User> actualUser2=userService.findByFirstNameIgnoreCase(expectedUser.getFirstName());
+        assertEquals(2,actualUser2.size());
+    }
+
+    @Test
+    @Transactional
+    public void findByLastNameTest(){
+        User expectedUser=new User();
+        expectedUser.setLastName("tsai");
+        expectedUser.setUsername("tsai.te");
+        expectedUser.setEmail("tsai.te@yahoo.com");
+        expectedUser.setPassword("123456");
+        userRepository.save(expectedUser);
+        List<User> actualUser=userService.findByLastName(expectedUser.getLastName());
+        assertEquals(1,actualUser.size());
+
+        User expectedUser2 =new User();
+        expectedUser2.setLastName("tsai");
+        expectedUser2.setUsername("tsai.te2");
+        expectedUser2.setEmail("tsai.te2@gmail.com");
+        expectedUser2.setPassword("123456");
+        userRepository.save(expectedUser2);
+        List<User> actualUser2=userService.findByLastName(expectedUser2.getLastName());
+        assertEquals(2,actualUser2.size());
+    }
+
+    @Test
+    @Transactional
     public void createUserTest(){
         //1. constructor a user object x
         //invoke createUser() x
@@ -69,7 +126,7 @@ public class UserServiceTest {
         newUser.setEmail("tete@hotmail.com");
         newUser.setPassword(password);
         User expectedUser=userService.createUser(newUser);
-        User actualUser=userService.findBy(newUser.getId());
+        User actualUser=userService.findById(newUser.getId());
 //        authority.setAuthority("REGISTERED_USER_ROLE");
         List<Authority> actualAuthorities=authorityRepository.findAuthoritiesByUser(expectedUser);
 

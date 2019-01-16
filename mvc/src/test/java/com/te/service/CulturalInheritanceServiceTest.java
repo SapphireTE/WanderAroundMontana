@@ -15,6 +15,8 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import javax.transaction.Transactional;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 @WebAppConfiguration
@@ -32,11 +34,11 @@ public class CulturalInheritanceServiceTest {
     @Transactional
     public void findByCategoryTest(){
         CulturalInheritance expectedResult=new CulturalInheritance();
-        expectedResult.setCategory("river");
-        expectedResult.setMuseum("hiking");
-        expectedResult.setHistoricalScene("m");
+        expectedResult.setCategory("Museum");
+//        expectedResult.setMuseum("hiking");
+//        expectedResult.setHistoricalScene("m");
         culturalInheritanceRepository.save(expectedResult);
-        CulturalInheritance actualResult=culturalInheritanceService.findByCategory(expectedResult.getCategory());
-        assertEquals(expectedResult.getId(), actualResult.getId());
+        List<CulturalInheritance> actualResult=culturalInheritanceService.findByCategory(expectedResult.getCategory());
+        assertEquals(1, actualResult.size());
     }
 }

@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value={"/api/scereries"})
 public class SceneryController {
@@ -29,10 +31,10 @@ public class SceneryController {
 //    }
 
     @RequestMapping(value="", method=RequestMethod.GET, params={"category"})
-    public Scenery findByCategory(@RequestParam("category") String category){
+    public List<Scenery> findByCategory(@RequestParam("category") String category){
         logger.debug("scenery parameter name is:" +category);
-//        Scenery result =sceneryService.findByCategory(category);
-        return new Scenery();
+        List<Scenery> result =sceneryService.findByCategory(category);
+        return result;
     }
 
 //    @RequestMapping(value="",method=RequestMethod.GET,params={"nature"})

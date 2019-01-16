@@ -21,11 +21,11 @@ public class Scenery {
     @Column(name="category")
     public String category;
 
-    @Column(name="nature")
-    public String nature;
-
-    @Column(name="national_park")
-    public String nationalParks;
+//    @Column(name="nature")
+//    public String nature;
+//
+//    @Column(name="national_park")
+//    public String nationalParks;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "scenery",cascade = CascadeType.ALL)
     @JsonView({JsView.Admin.class})
@@ -42,19 +42,19 @@ public class Scenery {
         this.category=category;
     }
 
-    public String getNature(){
-        return this.nature;
-    }
-    public void setNature(String nature){
-        this.nature=nature;
-    }
-
-    public String getNationalParks(){
-        return this.nationalParks;
-    }
-    public void setNationalParks(String nationParks){
-        this.nationalParks=nationParks;
-    }
+//    public String getNature(){
+//        return this.nature;
+//    }
+//    public void setNature(String nature){
+//        this.nature=nature;
+//    }
+//
+//    public String getNationalParks(){
+//        return this.nationalParks;
+//    }
+//    public void setNationalParks(String nationParks){
+//        this.nationalParks=nationParks;
+//    }
 
     public List<Image> getImages(){return images==null ? new ArrayList<>():images;}
     public void setImages (List<Image> images){this.images=images;}

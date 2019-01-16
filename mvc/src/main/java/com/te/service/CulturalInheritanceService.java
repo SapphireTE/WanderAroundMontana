@@ -6,6 +6,7 @@ import com.te.repository.CulturalInheritanceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -13,8 +14,8 @@ public class CulturalInheritanceService {
     @Autowired
     private CulturalInheritanceRepository culturalInheritanceRepository;
 
-    public CulturalInheritance findByCategory(String category){
-        CulturalInheritance result=culturalInheritanceRepository.findByCategoryIgnoreCase(category);
+    public List<CulturalInheritance> findByCategory(String category){
+        List<CulturalInheritance> result=culturalInheritanceRepository.findByCategoryIgnoreCase(category);
         return result;
     }
 
@@ -24,18 +25,18 @@ public class CulturalInheritanceService {
         return culturalInheritance;
     }
 
-    public CulturalInheritance createCulturalInheritance(CulturalInheritance culturalInheritance){
-        CulturalInheritance result=culturalInheritanceRepository.save(culturalInheritance);
-        return result;
-    }
-
-    public CulturalInheritance findByMuseum(String museum){
-        CulturalInheritance result=culturalInheritanceRepository.findByMuseum(museum);
-        return result;
-    }
-
-    public CulturalInheritance findByHistoricalScene(String historicalScene){
-        CulturalInheritance result=culturalInheritanceRepository.findByHistoricalScene(historicalScene);
-        return result;
-    }
+//    public CulturalInheritance createCulturalInheritance(CulturalInheritance culturalInheritance){
+//        CulturalInheritance result=culturalInheritanceRepository.save(culturalInheritance);
+//        return result;
+//    }
+//
+//    public CulturalInheritance findByMuseum(String museum){
+//        CulturalInheritance result=culturalInheritanceRepository.findByMuseum(museum);
+//        return result;
+//    }
+//
+//    public CulturalInheritance findByHistoricalScene(String historicalScene){
+//        CulturalInheritance result=culturalInheritanceRepository.findByHistoricalScene(historicalScene);
+//        return result;
+//    }
 }

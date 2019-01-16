@@ -41,7 +41,7 @@ public class AdminController {
     @RequestMapping(value = "/users/{Id}", method= RequestMethod.GET)
     public User elevateAdminRole (@PathVariable("Id") Long Id){ //???
         logger.debug("user path variable is:"+Id); //??
-        User result=userService.findBy(Id);
+        User result=userService.findById(Id);
         //TODO create admin authority object
         //setUser to selected user
         //save authority
@@ -56,7 +56,7 @@ public class AdminController {
     @RequestMapping(value="/users/{Id}", method=RequestMethod.DELETE)
     public User findAuthorityByUser (@PathVariable("Id") Long Id){
         logger.debug("User path variable is:"+Id);
-        User result=userService.findBy(Id);
+        User result=userService.findById(Id);
         Authority authority=new Authority();
         authority.setAuthority("REGISTERED_USER");
         authority.setUser(result);

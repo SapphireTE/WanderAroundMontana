@@ -21,17 +21,17 @@ public class OutdoorRecreation {
     @Column(name="category")
     public String category;
 
-    @Column(name="hiking")
-    public String hiking;
-
-    @Column(name="fishing")
-    public String fishing;
-
-    @Column(name="skiing")
-    public String skiing;
-
-    @Column(name="distance")
-    public Double distance;
+//    @Column(name="hiking")
+//    public String hiking;
+//
+//    @Column(name="fishing")
+//    public String fishing;
+//
+//    @Column(name="skiing")
+//    public String skiing;
+//
+//    @Column(name="distance")
+//    public Double distance;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "outdoorRecreation",cascade = CascadeType.ALL)
     @JsonView({JsView.Admin.class})
@@ -48,33 +48,33 @@ public class OutdoorRecreation {
         this.category=category;
     }
 
-    public String getHiking(){
-        return this.hiking;
-    }
-    public void setHiking(String hiking){
-        this.hiking=hiking;
-    }
-
-    public String getFishing(){
-        return this.fishing;
-    }
-    public void setFishing(String fishing){
-        this.fishing=fishing;
-    }
-
-    public String getSkiing(){
-        return this.skiing;
-    }
-    public void setSkiing(String skiing){
-        this.skiing=skiing;
-    }
-
-    public Double getDistant(){
-        return this.distance;
-    }
-    public void setDistant(Double distant){
-        this.distance=distant;
-    }
+//    public String getHiking(){
+//        return this.hiking;
+//    }
+//    public void setHiking(String hiking){
+//        this.hiking=hiking;
+//    }
+//
+//    public String getFishing(){
+//        return this.fishing;
+//    }
+//    public void setFishing(String fishing){
+//        this.fishing=fishing;
+//    }
+//
+//    public String getSkiing(){
+//        return this.skiing;
+//    }
+//    public void setSkiing(String skiing){
+//        this.skiing=skiing;
+//    }
+//
+//    public Double getDistant(){
+//        return this.distance;
+//    }
+//    public void setDistant(Double distant){
+//        this.distance=distant;
+//    }
 
     public List<Image> getImages(){return images==null ? new ArrayList<>():images;}
     public void setImages (List<Image> images){this.images=images;}
