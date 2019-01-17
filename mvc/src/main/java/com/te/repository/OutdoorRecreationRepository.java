@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface OutdoorRecreationRepository extends CrudRepository <OutdoorRecreation, Long> {
     List<OutdoorRecreation> findByCategoryIgnoreCase(String category);
+
+    List<OutdoorRecreation> findAll();
 //    OutdoorRecreation findBySkiing(String ski);
 //    OutdoorRecreation findByHiking(String hiking);
 //    OutdoorRecreation findByFishing(String fishing);

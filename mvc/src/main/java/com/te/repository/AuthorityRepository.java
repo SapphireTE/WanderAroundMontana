@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface AuthorityRepository extends CrudRepository<Authority, Long> {
     List<Authority> findAuthoritiesByUser(User user); //dsl domain specific language
-
+    List<Authority> findAll();
 }

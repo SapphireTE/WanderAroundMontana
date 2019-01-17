@@ -25,6 +25,10 @@ public class SceneryService {
         return scenery;
     }
 
+    public List<Scenery> findAll(){
+        return sceneryRepository.findAll();
+    }
+
 //    public Scenery createScenery(Scenery scenery){
 //        Scenery result=sceneryRepository.save(scenery);
 //        return result;

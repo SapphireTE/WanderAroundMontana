@@ -30,6 +30,10 @@ public class OutdoorRecreationService {
         return result;
     }
 
+    public List<OutdoorRecreation> findAll (){
+        return outdoorRecreationRepository.findAll();
+    }
+
 //    public OutdoorRecreation findByHiking (String hiking){
 //        OutdoorRecreation result=outdoorRecreationRepository.findByHiking(hiking);
 //        return result;

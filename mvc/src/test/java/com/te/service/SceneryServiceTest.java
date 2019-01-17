@@ -41,7 +41,10 @@ public class SceneryServiceTest {
         expectedResult2.setCategory("national_park");
         sceneryRepository.save(expectedResult2);
         List<Scenery> actualResult2=sceneryService.findByCategory(expectedResult2.getCategory());
-        assertEquals(2,actualResult2.size());
+        assertEquals(1,actualResult2.size());
+
+        List<Scenery> actualResult3=sceneryService.findAll();
+        assertEquals(2,actualResult3.size());
     }
 
     @Test

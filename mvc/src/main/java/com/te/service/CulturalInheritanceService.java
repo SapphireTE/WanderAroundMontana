@@ -25,6 +25,10 @@ public class CulturalInheritanceService {
         return culturalInheritance;
     }
 
+    public List<CulturalInheritance> findAll(){
+        return culturalInheritanceRepository.findAll();
+    }
+
 //    public CulturalInheritance createCulturalInheritance(CulturalInheritance culturalInheritance){
 //        CulturalInheritance result=culturalInheritanceRepository.save(culturalInheritance);
 //        return result;
