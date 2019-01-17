@@ -77,6 +77,14 @@ public class SecurityConfig{
 //                .and().formLogin()//;
 //                .and().exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint);
 //    }
+//    @Configuration
+//    public static class ResourcesWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
+//        @Override
+//        public void configure(WebSecurity web) throws Exception {
+//            web.ignoring()
+//                    .antMatchers("/resources/**","/swagger-ui.html","/webjar?**");
+//        }
+//    }
 
 
     @Configuration
@@ -96,6 +104,13 @@ public class SecurityConfig{
 //                .password("{noop}password").roles("REGISTERED_USER");
             auth.userDetailsService(userDetailsService).passwordEncoder(encoder);
         }
+
+//        @Autowired
+//        public void configureGlobal (AuthenticationManagerBuilder auth) throws Exception{
+//            PasswordEncoder encoder=new BCryptPasswordEncoder();
+//            auth.userDetailsService(userDetailsService).passwordEncoder(encoder);
+//        }
+
         @Override
         public void configure(WebSecurity web) throws Exception {
             web.ignoring()

@@ -41,11 +41,15 @@ public class OutdoorRecreationServiceTest {
         List<OutdoorRecreation> actualResult=outdoorRecreationService.findByCategory (expectedResult.getCategory());
         assertEquals(1, actualResult.size());
 
-//        OutdoorRecreation expectedResult2=new OutdoorRecreation();
-//        expectedResult2.setCategory("Fishing");
-//        outdoorRecreationRepository.save(expectedResult2);
-//        List<OutdoorRecreation> actualResult2=outdoorRecreationService.findByCategory(expectedResult2.getCategory());
-//        assertEquals(2,actualResult2.size());
+        OutdoorRecreation expectedResult2=new OutdoorRecreation();
+        expectedResult2.setCategory("Fishing");
+        outdoorRecreationRepository.save(expectedResult2);
+        List<OutdoorRecreation> actualResult2=outdoorRecreationService.findByCategory(expectedResult2.getCategory());
+        assertEquals(1,actualResult2.size());
+
+
+        List<OutdoorRecreation> actualResult3=outdoorRecreationService.findAll();
+        assertEquals(2,actualResult3.size());
     }
 
 //    public void findByIdTest(){

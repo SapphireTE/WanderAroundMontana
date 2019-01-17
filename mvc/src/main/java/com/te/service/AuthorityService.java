@@ -28,6 +28,10 @@ public class AuthorityService {
         return authorities;
     }
 
+    public List<Authority> findAll(){
+        return authorityRepository.findAll();
+    }
+
 //    @Transactional
 //    public Authority deleteAuthority(String role, User user){
 //        Authority authority=new Authority();

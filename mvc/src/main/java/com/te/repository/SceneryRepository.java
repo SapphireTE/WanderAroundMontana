@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface SceneryRepository extends CrudRepository <Scenery, Long> {
     List<Scenery> findByCategoryIgnoreCase (String category);
+    List<Scenery> findAll();
 //    List<Scenery> findByNature (String nature);
 //    List<Scenery> findByNationalParks (String nationalParks);
 }
