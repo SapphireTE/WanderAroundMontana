@@ -50,11 +50,15 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         User domainUser=null;
         try {
             domainUser=userService.findByUsernameIgnoreCase(username);
+            List<Authority> authority=authorityRepository.findAuthoritiesByUser(domainUser);
+            domainUser.setAuthorities(authority);
         } catch (Exception repositoryProblem) {
             logger.debug("catch AuthenticationServiceException from AuthenticationProvider");
         }
         return domainUser;
     }
+
+
 
 
 

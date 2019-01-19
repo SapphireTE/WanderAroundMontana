@@ -13,8 +13,8 @@ public class ImageService {
     @Autowired
     private ImageRepository imageRepository;
 
-    public Image findById(Long Id){
-        Optional<Image> result=imageRepository.findById(Id);
+    public Image findById(Long id){
+        Optional<Image> result=imageRepository.findById(id);
         Image image=result.get();
         return image;
     }
