@@ -117,17 +117,23 @@ public class SecurityConfig{
                     .antMatchers("/resources/**");
         }
 
-        @Bean(name= BeanIds.AUTHENTICATION_MANAGER)
+        @Bean(name= BeanIds.AUTHENTICATION_MANAGER) //allow AuthenticationManager to be autowired
         @Override
         public AuthenticationManager authenticationManagerBean() throws Exception{
-            return super.authenticationManagerBean();
+            return super.authenticationManagerBean(); //super means its patents' bean
         }
+
+//        @Bean(name=BeanIds.AUTHENTICATION_MANAGER)
+//        @Override
+//        public AuthenticationManager authenticationManagerBean() throws Exception{
+//            return super.authenticationManagerBean();
+//        }
 
         protected void configure(HttpSecurity http) throws Exception {
             //http://www.baeldung.com/securing-a-restful-web-service-with-spring-security
             http
                     .addFilterAt(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-                    .csrf().disable().authorizeRequests().antMatchers("/api/users/login","/api/users/signup","/api/users/signUp").permitAll()
+                    .csrf().disable().authorizeRequests().antMatchers("/api/users/login","/api/users/signup","/api/users/signUp","/api/users/login1").permitAll()
                     .and()
                     //api/admin ADMIN
                     .authorizeRequests().antMatchers("/api/admin").hasAnyRole("ADMIN")

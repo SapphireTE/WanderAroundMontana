@@ -108,13 +108,13 @@ public class UserServiceTest {
         assertEquals(1,actualUser.size());
 
         User expectedUser2 =new User();
-        expectedUser2.setLastName("tsai");
+        expectedUser2.setLastName("tsai2");
         expectedUser2.setUsername("tsai.te2");
         expectedUser2.setEmail("tsai.te2@gmail.com");
         expectedUser2.setPassword("123456");
         userRepository.save(expectedUser2);
         List<User> actualUser2=userService.findByLastName(expectedUser2.getLastName());
-        assertEquals(2,actualUser2.size());
+        assertEquals(1,actualUser2.size());
 
         List<User> actualUser3 =userService.findAll();
         assertEquals(2,actualUser3.size());

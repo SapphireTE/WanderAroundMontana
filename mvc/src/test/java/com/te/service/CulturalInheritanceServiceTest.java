@@ -41,6 +41,8 @@ public class CulturalInheritanceServiceTest {
         List<CulturalInheritance> actualResult=culturalInheritanceService.findByCategory(expectedResult.getCategory());
         assertEquals(1, actualResult.size());
 
+//        CulturalInheritance expectedRe
+
         List<CulturalInheritance> actualResult2=culturalInheritanceService.findAll();
         assertEquals(1,actualResult2.size());
     }

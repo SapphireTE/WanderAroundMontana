@@ -40,7 +40,7 @@ public class UserController extends BaseController {
     private JwtTokenUtil jwtTokenUtil;
 
     @Autowired
-    private AuthenticationManager authenticationManager;
+    private AuthenticationManager authenticationManager; //check SecurityConfig line 120
 
     @RequestMapping(method = RequestMethod.GET)
     public List<User> getUserList(){
@@ -135,6 +135,20 @@ public class UserController extends BaseController {
         }
     }
 
+    @RequestMapping(value="/login1",method=RequestMethod.POST)
+    public ResponseEntity<?> login1 (@RequestBody RestAuthenticationRequest authenticationRequest, Device device){
+        try {
+            Authentication notFullAuthenticated = new UsernamePasswordAuthenticationToken(
+                    authenticationRequest.getUsername(),
+                    authenticationRequest.getPassword()
+            );
+            final Authentication authentication = authenticationManager.authenticate(notFullAuthenticated);
+        }catch (AuthenticationException ex){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("authentication failure, please check your login info");
+        }
+        return null;
+    }
+
     @RequestMapping(value="",method = RequestMethod.GET,params = {"lastName"})
     public List<User> findByLastName (@RequestParam("lastName") String lastName){
         logger.debug("parameter name is:"+lastName);
@@ -142,6 +156,7 @@ public class UserController extends BaseController {
         return result;
         //userService.findBy(new User(Id)).get();
     }
+
 
     //todo set time api
 
