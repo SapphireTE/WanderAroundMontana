@@ -92,6 +92,16 @@ public class MvcConfig implements WebMvcConfigurer {
     }
 
 //    @Bean
+//    public DeviceHandlerMethodArgumentResolver deviceHandlerMethodArgumentResolver1(){
+//        return new DeviceHandlerMethodArgumentResolver();
+//    }
+//
+//    @Override
+//    public void addArgumentResolvers1(List<HandlerMethodArgumentResolver> argumentResolvers) {
+//        argumentResolvers.add(deviceHandlerMethodArgumentResolver());
+//    }
+
+//    @Bean
 //    public ViewResolver xmlViewResolver(){
 //        return new XmlViewResolver();
 //    }

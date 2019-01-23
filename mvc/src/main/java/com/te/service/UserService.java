@@ -60,7 +60,11 @@ public class UserService {
 //        return userRepository.save(user);
 //    }
 
-
+    public User findByEmail (String email){
+        Optional<User> result=userRepository.findByEmailIgnoreCase(email);
+        User user=result.get();
+        return user;
+    }
 
     public List<User> findByFirstNameIgnoreCase(String firstName){
         List<User> result=userRepository.findByFirstNameIgnoreCase(firstName);

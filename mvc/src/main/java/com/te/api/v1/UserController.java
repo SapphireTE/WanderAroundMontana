@@ -16,6 +16,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -135,19 +136,23 @@ public class UserController extends BaseController {
         }
     }
 
-    @RequestMapping(value="/login1",method=RequestMethod.POST)
-    public ResponseEntity<?> login1 (@RequestBody RestAuthenticationRequest authenticationRequest, Device device){
-        try {
-            Authentication notFullAuthenticated = new UsernamePasswordAuthenticationToken(
-                    authenticationRequest.getUsername(),
-                    authenticationRequest.getPassword()
-            );
-            final Authentication authentication = authenticationManager.authenticate(notFullAuthenticated);
-        }catch (AuthenticationException ex){
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("authentication failure, please check your login info");
-        }
-        return null;
-    }
+//    @RequestMapping(value="/login1",method=RequestMethod.POST)
+//    public ResponseEntity<?> login1 (@RequestBody RestAuthenticationRequest authenticationRequest, Device device){
+//        try {
+//            Authentication notFullAuthenticated = new UsernamePasswordAuthenticationToken(
+//                    authenticationRequest.getUsername(),
+//                    authenticationRequest.getPassword()
+//            );
+//            final Authentication authentication = authenticationManager.authenticate(notFullAuthenticated);
+//            SecurityContextHolder.getContext().setAuthentication(authentication);
+//            try{
+//                final UserDetails userDetails=userService.(notFullAuthenticated);
+//            }
+//        }catch (AuthenticationException ex){
+//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("authentication failure, please check your login info");
+//        }
+//        return null;
+//    }
 
     @RequestMapping(value="",method = RequestMethod.GET,params = {"lastName"})
     public List<User> findByLastName (@RequestParam("lastName") String lastName){
