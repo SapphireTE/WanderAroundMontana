@@ -134,24 +134,42 @@ public class UserServiceTest {
 
         User newUser=new User();
         String password = "123456"; //?
-//        Authority authority=new Authority();
+        Authority authority=new Authority();
         newUser.setUsername("tete");
         newUser.setEmail("tete@hotmail.com");
         newUser.setPassword(password);
+        userRepository.save(newUser);
         User expectedUser=userService.createUser(newUser);
         User actualUser=userService.findById(newUser.getId());
-//        authority.setAuthority("REGISTERED_USER_ROLE");
+        authority.setAuthority("REGISTERED_USER_ROLE");
+        authority.setUser(newUser);
+        authorityRepository.save(authority);
         List<Authority> actualAuthorities=authorityRepository.findAuthoritiesByUser(expectedUser);
+//        List<Authority> actualAuthorities=authorityRepository.findAuthoritiesByUser(newUser.get());
 
         assertEquals(newUser.getUsername(), actualUser.getUsername());
         assertEquals(newUser.getEmail(),actualUser.getEmail());
         assertNotEquals(password,actualUser.getPassword());
         assertEquals(1,actualAuthorities.size());
-        Authority actualAuthority = actualAuthorities.get(0);
+        Authority actualAuthority = actualAuthorities.get(0);//???
         assertEquals("REGISTERED_USER_ROLE",actualAuthority.getAuthority());
-        assertEquals(actualUser.getId(),actualAuthority.getUser().getId());
+
+//        assertEquals(actualUser.getId(),actualAuthority.getUser().getId());
 
 //        assertEquals(expectedUser.getAuthorities(),actualUser.getAuthorities());
+    }
+
+    @Test
+    @Transactional
+    public void createUserTest2(){
+        String password="12";
+        User createNewUser=new User();
+        createNewUser.setUsername("te");
+        createNewUser.setPassword(password);
+        createNewUser.setEmail("te@yahoo.com");
+        userRepository.save(createNewUser);
+        User actualUser=userService.findByUsernameIgnoreCase(createNewUser.getUsername());
+        assertEquals(createNewUser.getPassword(),actualUser.getPassword());
     }
 
 

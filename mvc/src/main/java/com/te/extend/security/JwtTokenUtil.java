@@ -20,24 +20,24 @@ import java.util.Map;
 
 //** 11/03/2018
 
-@Component
+@Component //this is a component, ultimately, it will become a bean
 public class JwtTokenUtil {
 
     private static final long serialVersionUID = -3301605591108950415L;
 
-    static final String CLAIM_KEY_USERNAME = "sub";
-    static final String CLAIM_KEY_AUDIENCE = "audience";
-    static final String CLAIM_KEY_CREATED = "created";
+    private static final String CLAIM_KEY_USERNAME = "sub"; //sub: subject
+    private static final String CLAIM_KEY_AUDIENCE = "audience";
+    private static final String CLAIM_KEY_CREATED = "created";
 
     private static final String AUDIENCE_UNKNOWN = "unknown";
     private static final String AUDIENCE_WEB = "web";
     private static final String AUDIENCE_MOBILE = "mobile";
     private static final String AUDIENCE_TABLET = "tablet";
 
-    @Value("#{shareProperties['jwt.secret']}")
+    @Value("#{shareProperties['jwt.secret']}") //jwt secret is encode key, secret
     private String secret;
 
-    @Value("#{shareProperties['jwt.expiration']}")
+    @Value("#{shareProperties['jwt.expiration']}") //after long type need a "L", expiration=4567L
     private Long expiration;
 
     public String getUsernameFromToken(String token) {
@@ -122,18 +122,36 @@ public class JwtTokenUtil {
         return audience;
     }
 
+//    private String generateAudience1(Device device){
+//        String audience= AUDIENCE_UNKNOWN;
+//        if (device.isNormal()){
+//            audience=AUDIENCE_WEB;
+//        }else if(device.isMobile()){
+//            audience=AUDIENCE_MOBILE;
+//        }else if(device.isTablet()){
+//            audience=AUDIENCE_TABLET;
+//        }
+//        return audience;
+//    }
+
     private Boolean ignoreTokenExpiration(String token) {
         String audience = getAudienceFromToken(token);
         return (AUDIENCE_TABLET.equals(audience) || AUDIENCE_MOBILE.equals(audience));
     }
 
-    public String generateToken(UserDetails userDetails, Device device) {
+    public String generateToken(UserDetails userDetails, Device device) { //Device: laptop or phone. Device is a library.
         Map<String, Object> claims = new HashMap<>();
         claims.put(CLAIM_KEY_USERNAME, userDetails.getUsername());
         claims.put(CLAIM_KEY_AUDIENCE, generateAudience(device));
         claims.put(CLAIM_KEY_CREATED, new Date());
         return generateToken(claims);
     }
+
+//    public String generateToken1(UserDetails userDetails, Device device){
+//        Map<String, Object> claims=new HashMap<>();
+//        claims.put(CLAIM_KEY_USERNAME, userDetails.getUsername());
+//        claims.put(CLAIM_KEY_AUDIENCE,userDetails.g)
+//    }
 
     private String generateToken(Map<String, Object> claims) {
         return Jwts.builder()
