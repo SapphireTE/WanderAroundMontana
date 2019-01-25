@@ -180,7 +180,7 @@ public class JwtTokenUtil {
     }
 
     public Boolean validateToken(String token, UserDetails userDetails) {
-        User user = (User) userDetails;
+        User user = (User) userDetails; //() cast, UserDetails cast User
         final String username = getUsernameFromToken(token);
         final Date created = getCreatedDateFromToken(token);
 //        final Date expiration = getExpirationDateFromToken(token);
@@ -189,6 +189,12 @@ public class JwtTokenUtil {
                         && !isTokenExpired(token));
 //                        && !isCreatedBeforeLastPasswordReset(created, Date.from(user.getLastResetAt())));
   }
+
+//  public Boolean validateToken1 (String token, UserDetails userDetails) {
+//        User user=(User) userDetails;
+//        final String username=getUsernameFromToken(token);
+//        final Date created=getCreatedDateFromToken(token);
+//  }
 }
 
 

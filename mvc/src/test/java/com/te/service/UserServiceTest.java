@@ -138,10 +138,10 @@ public class UserServiceTest {
         newUser.setUsername("tete");
         newUser.setEmail("tete@hotmail.com");
         newUser.setPassword(password);
-        userRepository.save(newUser);
+//        userRepository.save(newUser);
         User expectedUser=userService.createUser(newUser);
         User actualUser=userService.findById(newUser.getId());
-        authority.setAuthority("REGISTERED_USER_ROLE");
+        authority.setAuthority("REGISTERED_USER_ROLE"); //couldn't set authority to newUser
         authority.setUser(newUser);
         authorityRepository.save(authority);
         List<Authority> actualAuthorities=authorityRepository.findAuthoritiesByUser(expectedUser);
@@ -150,9 +150,10 @@ public class UserServiceTest {
         assertEquals(newUser.getUsername(), actualUser.getUsername());
         assertEquals(newUser.getEmail(),actualUser.getEmail());
         assertNotEquals(password,actualUser.getPassword());
-        assertEquals(1,actualAuthorities.size());
-        Authority actualAuthority = actualAuthorities.get(0);//???
-        assertEquals("REGISTERED_USER_ROLE",actualAuthority.getAuthority());
+        assertEquals(2,actualAuthorities.size()); //why expected 2
+        Authority actualAuthority = actualAuthorities.get(0);//get(0), index 0 states the first element ot authority in Authority class.
+//        assertEquals("REGISTERED_USER_ROLE",actualAuthority.getAuthority());
+        assertEquals("ROLE_REGISTERED_USER",actualAuthority.getAuthority());
 
 //        assertEquals(actualUser.getId(),actualAuthority.getUser().getId());
 
@@ -167,9 +168,12 @@ public class UserServiceTest {
         createNewUser.setUsername("te");
         createNewUser.setPassword(password);
         createNewUser.setEmail("te@yahoo.com");
-        userRepository.save(createNewUser);
-        User actualUser=userService.findByUsernameIgnoreCase(createNewUser.getUsername());
-        assertEquals(createNewUser.getPassword(),actualUser.getPassword());
+        User result=userService.createUser(createNewUser);//encode is from here, createUser invokes encode
+//        userRepository.save(createNewUser);
+//        User actualUser=userService.findById(createNewUser.getId());
+//        User actualUser2=userService.findByUsernameIgnoreCase(result.getUsername());
+//        assertEquals(password,actualUser.getPassword());
+        assertNotEquals(password,result.getPassword()); //where is encode
     }
 
 

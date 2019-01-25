@@ -77,6 +77,19 @@ public class UserService {
         return result;
     }
 
+    //todo find emailorusername method
+    //check if arguemnt is null--variable has not been initialized yet, no memory address yet
+    //check if argument is empty string--"", is empty, there is a memory address assginning the variable
+    //find by username
+    //if null
+    //find by email
+    //if null
+    //return null
+//    public User findUserByUsernameOrEmail (String username, String email){
+//        User result = null;
+//
+//    }
+
 //    public User setDateOfBirth (LocalDate dateOfBirth){
 //        User result=userRepository.setDateOfBirth(dateOfBirth);
 //        return result;
