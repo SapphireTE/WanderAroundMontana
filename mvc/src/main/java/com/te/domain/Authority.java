@@ -1,5 +1,7 @@
 package com.te.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.internal.NotNull;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
@@ -15,12 +17,25 @@ public class Authority implements GrantedAuthority {
     @SequenceGenerator(name ="authorities_id_seq", sequenceName ="authorities_id_seq", allocationSize = 1)
     private Long Id;
 
+    @NotNull //can never be null
     private String authority;
 
-    @ManyToOne
+    @NotNull
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="user_id")
+    @JsonIgnore
     private User user;
 
+    public Authority(){}
+
+    public Authority(User user, String authority){
+        this.user=user;
+        this.authority=authority;
+    }
+
+    public Long getId() {
+        return Id;
+    }
 
     @Override
     public String getAuthority() {
