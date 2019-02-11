@@ -176,5 +176,14 @@ public class UserServiceTest {
         assertNotEquals(password,result.getPassword()); //where is encode
     }
 
+    @Test
+    @Transactional
+    public void desUsernameTest(){
+        User desUsername=new User();
+        desUsername.getUsername();
+        List<User> result=userRepository.findAll();
+        assertEquals(desUsername.getUsername(),result);
+        assertEquals(1,result);
+    }
 
 }

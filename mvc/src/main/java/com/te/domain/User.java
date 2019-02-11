@@ -17,7 +17,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
 @Table(name="users")
-public class User implements UserDetails {
+public class User implements UserDetails, Comparable<User> {
 
     @Id //this annotation tells id is a primary key
     @GeneratedValue(strategy = SEQUENCE, generator ="users_id_seq") //indicate which table to generate value
@@ -153,6 +153,16 @@ public class User implements UserDetails {
     public void setLastName(String lastName){
         this.lastName=lastName;
     }
+
+    public int compareTo(User user){
+        return this.getUsername().compareTo(user.username);
+    }
+
+//    public List<User> compareTo(User username){
+//
+//
+//    }
+
 
 }
 

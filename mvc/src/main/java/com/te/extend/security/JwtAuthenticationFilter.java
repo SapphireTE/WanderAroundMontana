@@ -64,3 +64,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         chain.doFilter(request, response);
     }
 }
+
+    //todo extract token from bearer
+    //2. get header and username info from token
+    //3. authentication user based on info in step2

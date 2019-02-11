@@ -15,11 +15,13 @@ public interface UserRepository extends CrudRepository<User, Long> { // -- inter
 //    Optional<User> findById(Long Id);
     List<User> findByFirstNameIgnoreCase(String username);
 
-    Optional<User> findByEmailIgnoreCase(String email);
+    User findByEmailIgnoreCase(String email);
 
     List<User> findAll();
 
     List<User> findByLastName (String lastName);
+
+    List<User> username (String username);
 
 
 

@@ -43,6 +43,9 @@ public class UserController extends BaseController {
     @Autowired
     private AuthenticationManager authenticationManager; //check SecurityConfig line 120
 
+//    @Autowired
+//    private User user;
+
     @RequestMapping(method = RequestMethod.GET)
     public List<User> getUserList(){
         logger.debug("list users");
@@ -112,7 +115,7 @@ public class UserController extends BaseController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ResponseEntity<?> login (@RequestBody RestAuthenticationRequest restAuthenticationRequest, Device device) {
+    public ResponseEntity<?> login (@RequestBody RestAuthenticationRequest restAuthenticationRequest, Device device) { //<?> means can be string or map or something else
         String username=restAuthenticationRequest.getUsername();
         String password=restAuthenticationRequest.getPassword();
         logger.debug("parameter name is:" +username);
@@ -162,6 +165,21 @@ public class UserController extends BaseController {
         //userService.findBy(new User(Id)).get();
     }
 
+//    @Override
+//    public int compareTo(Object o) {
+//        return 0;
+//    }
+
+
+    @RequestMapping(value = "sortUsername",method = RequestMethod.GET,params = {"username"})
+    public List<User> desUsername (@RequestParam("username") String username){
+//        public int compare(User, User) {
+//        logger.debug("parameter name is:"+username);
+        List<User> unsort=userService.findAll();
+        List<User> sorted = userService.desUsername(unsort);
+//        comparetor
+        return sorted;
+    }
 
     //todo set time api
 
