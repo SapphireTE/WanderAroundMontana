@@ -1,5 +1,6 @@
 package com.te.service;
 
+import com.amazonaws.services.dynamodbv2.xspec.S;
 import com.te.domain.Authority;
 import com.te.domain.User;
 import com.te.repository.AuthorityRepository;
@@ -12,6 +13,8 @@ import javax.management.relation.Role;
 import javax.transaction.Transactional;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -61,9 +64,10 @@ public class UserService {
 //    }
 
     public User findByEmail (String email){
-        Optional<User> result=userRepository.findByEmailIgnoreCase(email);
-        User user=result.get();
-        return user;
+//        Optional<User> result=userRepository.findByEmailIgnoreCase(email);
+        User result=userRepository.findByEmailIgnoreCase(email);
+//        User user=result.get();
+        return result;
     }
 
     public List<User> findByFirstNameIgnoreCase(String firstName){
@@ -75,6 +79,23 @@ public class UserService {
     public List<User> findByLastName (String lastName){
         List<User> result=userRepository.findByLastName(lastName);
         return result;
+    }
+
+    public List<User> desUsername (List<User> unsorted){
+        Collections.sort(unsorted);
+        return unsorted;
+    }
+
+    public static void main (String[] args){
+
+        List<User> username=new ArrayList<User>();
+
+        Collections.sort(username);
+
+        for (User user : username){
+            System.out.println("Username descending order is:" +user.getUsername());
+        }
+
     }
 
     //todo find emailorusername method
