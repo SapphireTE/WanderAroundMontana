@@ -25,7 +25,7 @@ public class JmsConfig {
 
     @Bean(name="connectionFactory")
     public SQSConnectionFactory getSQSConnectFactory(){
-        AmazonSQS amazonSQSClient=AmazonSQSClientBuilder.standard().withRegion("us-east-1").withCredentials(new DefaultAWSCredentialsProviderChain()).build();
+        AmazonSQS amazonSQSClient=AmazonSQSClientBuilder.standard().withCredentials(new DefaultAWSCredentialsProviderChain()).build();
         SQSConnectionFactory factory=new SQSConnectionFactory(new ProviderConfiguration(),amazonSQSClient);
         return factory;
     }
@@ -43,7 +43,7 @@ public class JmsConfig {
 
     @Bean
     public AmazonSQS getAmazonSQS(){
-        AmazonSQS amazonSQS= AmazonSQSClientBuilder.standard().withRegion("us-east-1").withCredentials(new DefaultAWSCredentialsProviderChain()).build();
+        AmazonSQS amazonSQS= AmazonSQSClientBuilder.standard().withCredentials(new DefaultAWSCredentialsProviderChain()).build();
         return amazonSQS;
     }
 
