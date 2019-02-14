@@ -175,8 +175,8 @@ public class UserController extends BaseController {
     public List<User> desUsername (@RequestParam("username") String username){
 //        public int compare(User, User) {
 //        logger.debug("parameter name is:"+username);
-        List<User> unsort=userService.findAll();
-        List<User> sorted = userService.desUsername(unsort);
+        List<User> unsorted=userService.findAll(); //
+        List<User> sorted = userService.desUsername(unsorted);
 //        comparetor
         return sorted;
     }

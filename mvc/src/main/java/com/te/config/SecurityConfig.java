@@ -133,7 +133,7 @@ public class SecurityConfig{
             //http://www.baeldung.com/securing-a-restful-web-service-with-spring-security
             http
                     .addFilterAt(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-                    .csrf().disable().authorizeRequests().antMatchers("/api/users/login","/api/users/signup","/api/users/signUp","/api/users/login1").permitAll()
+                    .csrf().disable().authorizeRequests().antMatchers("/api/users/login","/api/users/signup","/api/users/signUp","/api/users/login1","/api/users/sortUsername").permitAll()
                     .and()
                     //api/admin ADMIN
                     .authorizeRequests().antMatchers("/api/admin").hasAnyRole("ADMIN")
