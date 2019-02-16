@@ -18,7 +18,7 @@ public class StorageService {
 
     public StorageService(AmazonS3 s3){ //constructor
         this.s3=s3;
-    }
+    } //constructor of s3
 
     public StorageService(){
     }
@@ -33,16 +33,24 @@ public class StorageService {
 
     public void putObject(String S3key, File file){
         if(S3key!=null){
-            s3.putObject(bucket,S3key,file);
+            s3.putObject(bucket,S3key,file); //bucket has been assigned (赋予) by "private String bucket;"
         }
     }
 
+//    public void putObject(String S3key, File file){
+//        s3.putObject(bucket, S3key, file);
+//    }
+
+//    public void putObject(String bucket, String S3key, File file){
+//        s3.putObject(bucket, S3key, file);
+//    }
+
     public void putObject(String bucket, String S3key, File file){
-        s3.putObject(bucket, S3key, file);
+        s3.putObject(bucket,S3key,file); //String bucket on here because in case we want to use a global bucket
     }
 
-    public void getObject(String S3key, File file){
-        if(S3key !=null){
+    public void getObject(String S3key, File file){ //void--return nothing
+        if(S3key !=null) {
             s3.getObject(bucket,S3key);
         }
     }
@@ -51,14 +59,14 @@ public class StorageService {
         s3.putObject(bucket,S3key,file);
     }
 
-    public void uploadObject(String keyName, String filePath, String bucketName){
-        System.out.format("Uploading %s to S3 bucket %s...\n", filePath, bucketName);
-        final AmazonS3 s3 = AmazonS3ClientBuilder.defaultClient();
-        try {
-            s3.putObject(bucketName, keyName, new File(filePath));
-        } catch (AmazonServiceException e) {
-            System.err.println(e.getErrorMessage());
-            System.exit(1);
-        }
-    }
+//    public void uploadObject(String keyName, String filePath, String bucketName){
+//        System.out.format("Uploading %s to S3 bucket %s...\n", filePath, bucketName);
+//        final AmazonS3 s3 = AmazonS3ClientBuilder.defaultClient();
+//        try {
+//            s3.putObject(bucketName, keyName, new File(filePath));
+//        } catch (AmazonServiceException e) {
+//            System.err.println(e.getErrorMessage());
+//            System.exit(1);
+//        }
+//    }
 }

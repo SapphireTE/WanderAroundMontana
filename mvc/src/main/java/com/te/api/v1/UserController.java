@@ -157,7 +157,7 @@ public class UserController extends BaseController {
 //        return null;
 //    }
 
-    @RequestMapping(value="",method = RequestMethod.GET,params = {"lastName"})
+    @RequestMapping(value="", method = RequestMethod.GET,params = {"lastName"})
     public List<User> findByLastName (@RequestParam("lastName") String lastName){
         logger.debug("parameter name is:"+lastName);
         List<User> result=userService.findByLastName(lastName);
@@ -171,11 +171,11 @@ public class UserController extends BaseController {
 //    }
 
 
-    @RequestMapping(value = "sortUsername",method = RequestMethod.GET,params = {"username"})
+    @RequestMapping (value = "/username/sort", method = RequestMethod.GET)
     public List<User> desUsername (@RequestParam("username") String username){
 //        public int compare(User, User) {
 //        logger.debug("parameter name is:"+username);
-        List<User> unsorted=userService.findAll(); //
+        List<User> unsorted = userService.findAll(); //
         List<User> sorted = userService.desUsername(unsorted);
 //        comparetor
         return sorted;

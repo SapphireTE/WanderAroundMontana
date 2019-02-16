@@ -55,6 +55,10 @@ public class AppConfig { //scan all project
         return storageService;
     }
 
+//    public StorageService getStorageService(){
+//
+//    }
+
     //todo build a amazon sqs bean
     @Bean
     public AmazonSQS getAmazonSQS(){

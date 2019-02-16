@@ -38,7 +38,7 @@ public class StorageServiceTest {
     private StorageService storageService;
 
     @Mock
-    private AmazonS3 client= Mockito.mock(AmazonS3.class);
+    private AmazonS3 client = Mockito.mock(AmazonS3.class);
 
     @Before
     public void setUp() throws Exception{
@@ -73,6 +73,7 @@ public class StorageServiceTest {
         String key2=null;
         storageService.putObject(key2,file); // 0 time
         verify(client,times(1)).putObject("mt.project",key,file);
+        //todo fix bucket name
 
         String key3="testKey3";
         storageService.putObject(key3,file);
