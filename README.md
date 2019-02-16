@@ -1,5 +1,7 @@
-#Travel Routes in Montana
+# Travel Routes in Montana
+````
 This project is a back end of a web service based on Java and Spring frameworks.
+````
 ## Configure local environment 
 ```
 docker pull postgres
@@ -41,6 +43,8 @@ app.support.email={email}
 mvn compile test -Dspring.profiles.active=${env} -P ${env}
 ```
 ## Create war package file
-``` mvn compile package -DoutputDirectory=./target -P dev```
+``` 
+mvn compile package -DoutputDirectory=./target -P dev
+```
 
 
