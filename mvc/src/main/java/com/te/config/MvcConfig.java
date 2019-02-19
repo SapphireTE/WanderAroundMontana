@@ -26,7 +26,7 @@ import java.util.List;
 @EnableWebMvc
 @ComponentScan("com.te.api")
 @Import(SwaggerConfig.class)
-public class MvcConfig implements WebMvcConfigurer {
+public class MvcConfig implements WebMvcConfigurer { //servlet, controller
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
