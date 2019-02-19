@@ -33,6 +33,9 @@ import static org.mockito.Mockito.verify;
 @ActiveProfiles("unit")
 @TestExecutionListeners (listeners={DependencyInjectionTestExecutionListener.class})
 public class StorageServiceTest {
+
+    String bucket="mt.project";
+
     @InjectMocks
     @Autowired
     private StorageService storageService;
@@ -57,7 +60,7 @@ public class StorageServiceTest {
         //storageService=new StorageService(s3);
         String s3key="hhhhh";
         File file=new File("/Users/tsai_te/Desktop/testjpg.png");
-        String bucket="mt.project";
+//        String bucket="mt.project";
         storageService.putObject(s3key,file);
         assertTrue(false);
 
@@ -67,17 +70,16 @@ public class StorageServiceTest {
     public void putObjectMockTest(){
         String key="testKey";
         File file=new File("/Users/tsai_te/Desktop/testjpg.png");
-        String bucket="mt.project";
+//        String bucket="mt.project";
         storageService.putObject(key,file);
-        verify(client,times(1)).putObject("mt.project",key,file); //??????
+        verify(client,times(1)).putObject(bucket,key,file); // this client invokes putObject (s3) with 1 time, file is local file, key is file name on s3
         String key2=null;
         storageService.putObject(key2,file); // 0 time
-        verify(client,times(1)).putObject("mt.project",key,file);
-        //todo fix bucket name
+        verify(client,times(1)).putObject(bucket,key,file);
 
         String key3="testKey3";
         storageService.putObject(key3,file);
-        verify(client,times(1)).putObject("mt.project",key3,file);
+        verify(client,times(1)).putObject(bucket,key3,file);
     }
 
     @Test
@@ -87,7 +89,7 @@ public class StorageServiceTest {
 //        String bucket="mt.project";
 //        String key4="testKey";
         storageService.getObject(s3key,file);
-        verify(client,times(1)).getObject("mt.project",s3key); //??????
+        verify(client,times(1)).getObject(bucket,s3key); // see getObject source code, (String bucketName, String key)
 //        assertTrue(false);
     }
 

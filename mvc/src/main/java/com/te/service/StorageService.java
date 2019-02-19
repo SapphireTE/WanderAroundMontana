@@ -32,6 +32,7 @@ public class StorageService {
     }
 
     public void putObject(String S3key, File file){
+//        System.out.print(S3key+file.getAbsolutePath());
         if(S3key!=null){
             s3.putObject(bucket,S3key,file); //bucket has been assigned (赋予) by "private String bucket;"
         }
