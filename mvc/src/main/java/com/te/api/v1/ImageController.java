@@ -10,8 +10,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.sql.rowset.serial.SerialException;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value="/api/image") //build api
@@ -51,5 +54,18 @@ public class ImageController {
         }
         storageService.putObject(uploadFile.getOriginalFilename(),file);
         return "d";
+    }
+
+    @ResponseBody
+    @RequestMapping (value="user", method=RequestMethod.POST, consumes = {"multipart/form-data"})
+    public Map<String, String> uploadImage (@RequestParam(value="pic") MultipartFile picture){
+        Map<String, String> result= new HashMap<>(1);
+//        try{
+//            Image image=imageService.saveFakeImage(picture, isPublic);
+//            result.put("s3_url", image.getUrl());
+//        } catch (SerialException e) {
+//            logger.error ("error on savin record", e);
+//        }
+        return result;
     }
 }

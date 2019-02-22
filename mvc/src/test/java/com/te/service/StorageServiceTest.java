@@ -35,6 +35,10 @@ import static org.mockito.Mockito.verify;
 public class StorageServiceTest {
 
     String bucket="mt.project";
+    File file=new File("/Users/tsai_te/Desktop/testjpg.png");
+    String s3key="testThisKey";
+
+    //todo how to create a mock bucket and file
 
     @InjectMocks
     @Autowired
@@ -53,13 +57,16 @@ public class StorageServiceTest {
         validateMockitoUsage();
     }
 
+//    @Autowired
+//    private AmazonS3 client;
+
     @Test
     public void putObjectTest (){
 //        AmazonS3 s3=AmazonS3ClientBuilder.standard().withRegion("us-east-1").build();
-       // AmazonS3 s3=AmazonS3ClientBuilder.defaultClient();
+//        AmazonS3 s3=AmazonS3ClientBuilder.defaultClient();
         //storageService=new StorageService(s3);
-        String s3key="hhhhh";
-        File file=new File("/Users/tsai_te/Desktop/testjpg.png");
+//        String s3key="hhhhh";
+//        File file=new File("/Users/tsai_te/Desktop/testjpg.png");
 //        String bucket="mt.project";
         storageService.putObject(s3key,file);
         assertTrue(false);
@@ -69,28 +76,36 @@ public class StorageServiceTest {
     @Test
     public void putObjectMockTest(){
         String key="testKey";
-        File file=new File("/Users/tsai_te/Desktop/testjpg.png");
-//        String bucket="mt.project";
         storageService.putObject(key,file);
         verify(client,times(1)).putObject(bucket,key,file); // this client invokes putObject (s3) with 1 time, file is local file, key is file name on s3
         String key2=null;
         storageService.putObject(key2,file); // 0 time
-        verify(client,times(1)).putObject(bucket,key,file);
+        verify(client,times(0)).putObject(bucket,key2,file);
 
         String key3="testKey3";
         storageService.putObject(key3,file);
         verify(client,times(1)).putObject(bucket,key3,file);
+        String key4="testKey4";
+        storageService.putObject(key4,file);
+        verify(client,times(1)).putObject(bucket,key4,file);
     }
 
     @Test
     public void getObjectTest(){
-        String s3key="hhhh";
-        File file=new File("/Users/tsai_te/Desktop/testjpg.png"); //setup:create test data
-//        String bucket="mt.project";
-//        String key4="testKey";
         storageService.getObject(s3key,file);
         verify(client,times(1)).getObject(bucket,s3key); // see getObject source code, (String bucketName, String key)
-//        assertTrue(false);
+    }
+
+    @Test
+    public void getObjectTest2(){
+        storageService.getObject(bucket, s3key, file);
+        verify(client,times(1)).getObject(bucket,s3key);
+    }
+
+    @Test
+    public void deleteObjectTest(){
+        storageService.deleteObject(bucket,s3key,file);
+        verify(client,times(1)).deleteObject(bucket,s3key);
     }
 
 }

@@ -53,12 +53,12 @@ public class AdminController {
     }
 
     //todo de-elevate role
-    @RequestMapping(value="/users/{Id}", method=RequestMethod.DELETE)
-    public User findAuthorityByUser (@PathVariable("Id") Long Id){
+    @RequestMapping(value="/users/demote/{Id}", method=RequestMethod.GET)
+    public User demoteAdminRole (@PathVariable("Id") Long Id){
         logger.debug("User path variable is:"+Id);
         User result=userService.findById(Id);
         Authority authority=new Authority();
-        authority.setAuthority("REGISTERED_USER");
+        authority.setAuthority("ROLE_REGISTERED_USER");
         authority.setUser(result);
         authorityRepository.save(authority);
         return result;

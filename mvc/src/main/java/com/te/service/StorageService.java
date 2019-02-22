@@ -50,15 +50,17 @@ public class StorageService {
         s3.putObject(bucket,S3key,file); //String bucket on here because in case we want to use a global bucket
     }
 
-    public void getObject(String S3key, File file){ //void--return nothing
+    public void getObject(String S3key, File file){ //void method -- returns nothing
         if(S3key !=null) {
             s3.getObject(bucket,S3key);
         }
     }
 
     public void getObject(String bucket, String S3key, File file){
-        s3.putObject(bucket,S3key,file);
+        s3.getObject(bucket,S3key);
     }
+
+    public void deleteObject(String bucket, String S3key, File file) {s3.deleteObject(bucket, S3key);}
 
 //    public void uploadObject(String keyName, String filePath, String bucketName){
 //        System.out.format("Uploading %s to S3 bucket %s...\n", filePath, bucketName);
