@@ -81,6 +81,7 @@ public class User implements UserDetails, Comparable<User> {
         this.username=username;
     }
 
+
 //    @Column
 //    private String timezone;
 //
@@ -111,7 +112,9 @@ public class User implements UserDetails, Comparable<User> {
         return true;
     }
 
-//    public boolean isDelete(){return true;}
+//    @Override
+    @JsonIgnore
+    public boolean isDelete(){return true;}
 
     @Override
     @JsonIgnore

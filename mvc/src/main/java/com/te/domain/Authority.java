@@ -51,4 +51,7 @@ public class Authority implements GrantedAuthority {
     public void setUser(User user) {
         this.user = user;
     }
+
+    @JsonIgnore
+    public boolean isDelete(){return true;}
 }
