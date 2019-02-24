@@ -79,7 +79,7 @@ public class UserController extends BaseController {
 //        return result;
 //    }
 
-    @RequestMapping(value = "", method = RequestMethod.GET, params = {"username"})
+    @RequestMapping(value = "/getUsername", method = RequestMethod.GET, params = {"username"})
     public User findByUsername(@RequestParam(value = "username") String username, Device device) {
         setJsonViewClass(JsView.User.class); //what situation or role
         disableMapperFeature_DEFAULT_VIEW_INCLUSION();
@@ -95,7 +95,7 @@ public class UserController extends BaseController {
 //        }
     }
 
-    @RequestMapping(value = "", method = RequestMethod.GET, params = {"firstName"})
+    @RequestMapping(value = "/getFirstName", method = RequestMethod.GET, params = {"firstName"})
     public List<User> findByFirstName(@RequestParam("firstName") String firstName) {
         logger.debug("parameter name is:" + firstName);
         List<User> result = userService.findByFirstNameIgnoreCase(firstName);
@@ -157,7 +157,7 @@ public class UserController extends BaseController {
 //        return null;
 //    }
 
-    @RequestMapping(value="", method = RequestMethod.GET,params = {"lastName"})
+    @RequestMapping(value="/getLastName", method = RequestMethod.GET,params = {"lastName"})
     public List<User> findByLastName (@RequestParam("lastName") String lastName){
         logger.debug("parameter name is:"+lastName);
         List<User> result=userService.findByLastName(lastName);

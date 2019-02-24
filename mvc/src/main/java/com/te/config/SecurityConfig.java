@@ -129,23 +129,40 @@ public class SecurityConfig{
 //            return super.authenticationManagerBean();
 //        }
 
+//        http://localhost:8080/api/admin/users/demote/2
         protected void configure(HttpSecurity http) throws Exception {
             //http://www.baeldung.com/securing-a-restful-web-service-with-spring-security
             http
                     .addFilterAt(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-                    .csrf().disable().authorizeRequests().antMatchers("/api/users/login","/api/users/signup","/api/users/signUp","/api/users/login1","/api/users/username/sort").permitAll()
+                    .csrf().disable().authorizeRequests().antMatchers("/api/users/login","/api/users/signup","/api/users/signUp","/api/users/login1").permitAll()
                     .and()
                     //api/admin ADMIN
-                    .authorizeRequests().antMatchers("/api/admin").hasAnyRole("ADMIN")
+                    .authorizeRequests().antMatchers("/api/admin/**").hasAnyRole("ADMIN")
                     //api/scenery/** GET
                     .and()
-                    .authorizeRequests().antMatchers(HttpMethod.GET,"/api/scenery/**").permitAll()
+                    .authorizeRequests().antMatchers("/api/user/username/**","/api/users/username/**").hasAnyRole("ADMIN")
+//                    .and()
+//                    .authorizeRequests().antMatchers("/api/user/**","/api/users/**").hasAnyRole("ADMIN")
+                    .and()
+                    .authorizeRequests().antMatchers("api/user/getUsername","api/users/getUsername").hasAnyRole("ADMIN")
+                    .and()
+                    .authorizeRequests().antMatchers("api/user/getFirstName","api/users/getFirstName").hasAnyRole("ADMIN")
+                    .and()
+                    .authorizeRequests().antMatchers("api/user/getLastName","api/users/getLastName").hasAnyRole("ADMIN")
+                    .and()
+                    .authorizeRequests().antMatchers(HttpMethod.GET,"/api/scenery").permitAll()
                     //api/outdoor_recreation/** GET
                     .and()
-                    .authorizeRequests().antMatchers(HttpMethod.GET,"/api/outdoor_recreation/**").permitAll()
+                    .authorizeRequests().antMatchers("/api/scenery/**").hasAnyRole("REGISTERED_USER","ADMIN")
+                    .and()
+                    .authorizeRequests().antMatchers(HttpMethod.GET,"/api/outdoor_recreation").permitAll()
                     //api/cultural_inheritance/** GET
                     .and()
-                    .authorizeRequests().antMatchers(HttpMethod.GET,"/api/cultural_inheritance/**").permitAll()
+                    .authorizeRequests().antMatchers("api/outdoor_recreation/**").hasAnyRole("REGISTERED_USER","ADMIN")
+                    .and()
+                    .authorizeRequests().antMatchers(HttpMethod.GET,"/api/cultural_inheritance").permitAll()
+                    .and()
+                    .authorizeRequests().antMatchers("/api/cultural_inheritance/**").hasAnyRole("REGISTERED_USER","ADMIN")
                     .and()
                     .authorizeRequests().antMatchers("/api/**").hasAnyRole("REGISTERED_USER","ADMIN")
                     .and()
@@ -157,3 +174,8 @@ public class SecurityConfig{
         }
     }
 }
+
+//todo ask how to create a first admin
+//todo how to have different users look their own account info
+//such as any register users can access findUserByUsername api
+//any conflicts among line 167 and line 140, 143, 147, 149, 151. solution: delete "REGISTERED_USER" on line 167 or entire line?
