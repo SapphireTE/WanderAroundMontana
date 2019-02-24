@@ -26,6 +26,10 @@ public class Authority implements GrantedAuthority {
     @JsonIgnore
     private User user;
 
+    @NotNull
+    @Column(name="is_delete")
+    private Boolean isDelete=Boolean.FALSE;
+
     public Authority(){}
 
     public Authority(User user, String authority){
@@ -53,5 +57,5 @@ public class Authority implements GrantedAuthority {
     }
 
     @JsonIgnore
-    public boolean isDelete(){return true;}
+    public boolean isDelete(){return isDelete;}
 }

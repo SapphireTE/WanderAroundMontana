@@ -5,6 +5,7 @@ import com.te.repository.ImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 @Service
@@ -23,4 +24,16 @@ public class ImageService {
         Image result=imageRepository.findByImageName(imageName);
         return result;
     }
+
+    public Image findByUploadDate (LocalDate uploadDate){
+        Image result=imageRepository.findByUploadDate(uploadDate);
+        return result;
+    }
+
+    public Image findByUuid (String uuid) {
+        Image result=imageRepository.findByUuid(uuid);
+        return result;
+    }
+
+    //todo write Image saveFakeImage
 }
