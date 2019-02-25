@@ -23,10 +23,11 @@ public class AuthorityService {
         return authorityRepository.save(authority);
     }
 
-    public List<Authority> findAuthoritiesByUser(User user){
-        List<Authority> authorities=authorityRepository.findAuthoritiesByUser(user);
-        return authorities;
-    }
+//    todo need to comment out this method
+//    public List<Authority> findAuthoritiesByUser(User user){
+//        List<Authority> authorities=authorityRepository.findAuthoritiesByUser(user);
+//        return authorities;
+//    }
 
     public List<Authority> findAll(){
         return authorityRepository.findAll();
