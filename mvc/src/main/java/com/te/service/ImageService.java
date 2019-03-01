@@ -1,8 +1,6 @@
 package com.te.service;
 
-import com.te.domain.Image;
-import com.te.domain.Scenery;
-import com.te.domain.User;
+import com.te.domain.*;
 import com.te.repository.ImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,6 +51,25 @@ public class ImageService {
         return result;
     }
 
+    public List<Image> findByCulturalInheritance (CulturalInheritance culturalInheritance){
+        List<Image> result=imageRepository.findByCulturalInheritance(culturalInheritance);
+        return result;
+    }
+
+    public List<Image> findByCulturalInheritanceCategory(String category){
+        List<Image> result=imageRepository.findByCulturalInheritanceCategory(category);
+        return result;
+    }
+
+    public List<Image> findByOutdoorRecreation(OutdoorRecreation outdoorRecreation){
+        List<Image> result=imageRepository.findByOutdoorRecreation(outdoorRecreation);
+        return result;
+    }
+
+    public List<Image> findByOutdoorRecreationCategory(String category){
+        List<Image> result=imageRepository.findByOutdoorRecreationCategory(category);
+        return result;
+    }
 
 
     //todo write Image saveFakeImage

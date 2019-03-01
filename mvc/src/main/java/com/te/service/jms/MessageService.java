@@ -1,4 +1,4 @@
-package com.te.service;
+package com.te.service.jms;
 
 import com.amazonaws.services.sqs.AmazonSQS;
 import com.amazonaws.services.sqs.AmazonSQSClientBuilder;

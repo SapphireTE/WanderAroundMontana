@@ -144,6 +144,7 @@ public class SecurityConfig{
 //                    .and()
 //                    .authorizeRequests().antMatchers("/api/user/**","/api/users/**").hasAnyRole("ADMIN")
                     .and()
+                    //todo getUsername->username
                     .authorizeRequests().antMatchers("api/user/getUsername","api/users/getUsername").hasAnyRole("ADMIN")
                     .and()
                     .authorizeRequests().antMatchers("api/user/getFirstName","api/users/getFirstName").hasAnyRole("ADMIN")
@@ -176,6 +177,7 @@ public class SecurityConfig{
 }
 
 //todo ask how to create a first admin
+//write a sql to the first admin
 //todo how to have different users look their own account info
 //such as any register users can access findUserByUsername api
 //any conflicts among line 167 and line 140, 143, 147, 149, 151. solution: delete "REGISTERED_USER" on line 167 or entire line?

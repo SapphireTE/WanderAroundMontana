@@ -1,8 +1,6 @@
 package com.te.repository;
 
-import com.te.domain.Image;
-import com.te.domain.Scenery;
-import com.te.domain.User;
+import com.te.domain.*;
 import org.springframework.data.repository.CrudRepository;
 
 import java.time.LocalDate;
@@ -25,7 +23,11 @@ public interface ImageRepository extends CrudRepository<Image,Long> {
 //todo
 
 //    CulturalInheritance
+    List<Image> findByCulturalInheritance(CulturalInheritance culturalInheritance);
+    List<Image> findByCulturalInheritanceCategory (String category);
 
 //    OutdoorRecreation
+    List<Image> findByOutdoorRecreation(OutdoorRecreation outdoorRecreation);
+    List<Image> findByOutdoorRecreationCategory(String category);
 
 }

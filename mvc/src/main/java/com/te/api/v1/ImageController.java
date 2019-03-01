@@ -1,8 +1,6 @@
 package com.te.api.v1;
 
-import com.te.domain.Image;
-import com.te.domain.Scenery;
-import com.te.domain.User;
+import com.te.domain.*;
 import com.te.service.ImageService;
 import com.te.service.StorageService;
 import org.slf4j.Logger;
@@ -77,6 +75,34 @@ public class ImageController {
     private Image findByUser(@RequestParam("user") User user){
         logger.debug("Parameter name is:"+user);
         Image result =imageService.findByUser(user);
+        return result;
+    }
+
+    @RequestMapping(value = "", method = RequestMethod.GET, params = {"cultural_inheritance"})
+    public List<Image> findByCulturalInheritance (@RequestParam("cultural_inheritance") CulturalInheritance culturalInheritance){
+        logger.debug("Parameter name is:"+culturalInheritance);
+        List<Image> result=imageService.findByCulturalInheritance(culturalInheritance);
+        return result;
+    }
+
+    @RequestMapping(value = "",method = RequestMethod.GET,params = {"cultural_inheritance_category"})
+    public List<Image> findByCulturalInheritanceCategory (@RequestParam("cultural_inheritance_category") String culturalInheritanceCategory){
+        logger.debug("Parameter name is:"+culturalInheritanceCategory);
+        List<Image> result=imageService.findByCulturalInheritanceCategory(culturalInheritanceCategory);
+        return result;
+    }
+
+    @RequestMapping(value="",method = RequestMethod.GET,params = {"outdoor_recreation"})
+    public List<Image> findByOutdoorRecreation(@RequestParam("outdoor_recreation") OutdoorRecreation outdoorRecreation){
+        logger.debug("Parameter name is:"+outdoorRecreation);
+        List<Image> result=imageService.findByOutdoorRecreation(outdoorRecreation);
+        return result;
+    }
+
+    @RequestMapping(value = "",method = RequestMethod.GET,params = {"outdoor_recreation_category"})
+    public List<Image> findByOutdoorRecreationCategory(@RequestParam("outdoor_recreation_category") String outdoorRecreationCategory){
+        logger.debug("Parameter name is:"+outdoorRecreationCategory);
+        List<Image> result=imageService.findByOutdoorRecreationCategory(outdoorRecreationCategory);
         return result;
     }
 

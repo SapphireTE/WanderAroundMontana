@@ -7,6 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface AuthorityRepository extends CrudRepository<Authority, Long> {
-    List<Authority> findAuthoritiesByUserAAndIsDelete(User user,Boolean isDelete); //dsl domain specific language
+    List<Authority> findAuthoritiesByUserAndIsDelete(User user,Boolean isDelete); //dsl domain specific language
     List<Authority> findAll();
 }

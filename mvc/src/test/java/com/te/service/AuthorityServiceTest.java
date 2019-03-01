@@ -38,6 +38,7 @@ public class AuthorityServiceTest {
     @Transactional
     public void addAuthorityTest(){
         User createUser = new User();
+        Boolean isDelete=null;
         Authority authority=new Authority();
         createUser.setUsername("te");
         createUser.setPassword("123456");
@@ -54,7 +55,7 @@ public class AuthorityServiceTest {
 //      Guest_User role
         Authority expectedAuthority4=authorityService.addAuthority("guest_user",createUser);
 
-        List<Authority> actualAuthority=authorityService.findAuthoritiesByUser(createUser);
+        List<Authority> actualAuthority=authorityService.findAuthoritiesByUser(createUser,isDelete);
 //        User actualAuthority=authorityService.findAuthoritiesByUser(expectedAuthority.getUser());
         assertEquals(4,actualAuthority.size());
     }

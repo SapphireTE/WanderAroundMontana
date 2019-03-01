@@ -48,9 +48,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Transactional
     public UserDetails loadUserByUsername (String username) {
         User domainUser=null;
+        Boolean isDelete=null;
         try {
             domainUser=userService.findByUsernameIgnoreCase(username);
-            List<Authority> authority=authorityRepository.findAuthoritiesByUser(domainUser);
+            List<Authority> authority=authorityRepository.findAuthoritiesByUserAndIsDelete(domainUser,isDelete);
             domainUser.setAuthorities(authority);
         } catch (Exception repositoryProblem) {
             logger.debug("catch AuthenticationServiceException from AuthenticationProvider");
