@@ -3,6 +3,7 @@ package com.te.domain;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -19,20 +20,27 @@ public class Image {
     @SequenceGenerator(name = "images_id_seq",sequenceName = "images_id_seq",allocationSize = 1)
     private Long Id;
 
+    @NotNull
     @Column(name="image_name", unique=true)
     private String imageName;
 
-    @Column (name="title")
-    private String title;
+//    @Column (name="title")
+//    private String title;
 
+    @NotNull
     @Column (name="upload_date")
     private LocalDate uploadDate;
 
+    @NotNull
     @Column (name="url")
     private String url;
-    @Column
+
+    @NotNull
+    @Column (name="extension", unique=true)
     private String extension;
-    @Column
+
+    @NotNull
+    @Column(name="uuid", unique=true)
     public String uuid= UUID.randomUUID().toString();
 
     @ManyToOne(fetch=FetchType.LAZY)
@@ -66,8 +74,8 @@ public class Image {
     public String getImageName(){return this.imageName;}
     public void setImageName(String imageName){this.imageName=imageName;}
 
-    public String getTitle(){return this.title;}
-    public void setTitle(String title){this.title=title;}
+//    public String getTitle(){return this.title;}
+//    public void setTitle(String title){this.title=title;}
 
     public LocalDate getUploadDate(){return this.uploadDate;}
     public void setUploadDate (LocalDate uploadDate){this.uploadDate=uploadDate;}

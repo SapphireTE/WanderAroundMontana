@@ -140,11 +140,12 @@ public class UserServiceTest {
         newUser.setPassword(password);
 //        userRepository.save(newUser);
         User expectedUser=userService.createUser(newUser);
+        Boolean isDelete=null;
         User actualUser=userService.findById(newUser.getId());
         authority.setAuthority("REGISTERED_USER_ROLE"); //couldn't set authority to newUser
         authority.setUser(newUser);
         authorityRepository.save(authority);
-        List<Authority> actualAuthorities=authorityRepository.findAuthoritiesByUser(expectedUser);
+        List<Authority> actualAuthorities=authorityRepository.findAuthoritiesByUserAndIsDelete(expectedUser, isDelete);
 //        List<Authority> actualAuthorities=authorityRepository.findAuthoritiesByUser(newUser.get());
 
         assertEquals(newUser.getUsername(), actualUser.getUsername());

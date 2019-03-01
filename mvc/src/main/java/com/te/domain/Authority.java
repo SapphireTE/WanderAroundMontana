@@ -1,10 +1,11 @@
 package com.te.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sun.istack.internal.NotNull;
+
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
@@ -58,4 +59,9 @@ public class Authority implements GrantedAuthority {
 
     @JsonIgnore
     public boolean isDelete(){return isDelete;}
+
+//    @NotNull
+//    @Column(name = "is_Deleted", columnDefinition = "boolean default true", nullable = false)
+//    private boolean isDeleted = true;
+
 }

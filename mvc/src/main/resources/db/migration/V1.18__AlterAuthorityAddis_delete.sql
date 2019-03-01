@@ -1,0 +1,1 @@
+alter table Authorities add column is_delete boolean;

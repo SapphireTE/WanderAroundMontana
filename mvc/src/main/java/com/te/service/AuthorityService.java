@@ -24,10 +24,10 @@ public class AuthorityService {
     }
 
 //    todo need to comment out this method
-//    public List<Authority> findAuthoritiesByUser(User user){
-//        List<Authority> authorities=authorityRepository.findAuthoritiesByUser(user);
-//        return authorities;
-//    }
+    public List<Authority> findAuthoritiesByUser(User user, Boolean isDelete){
+        List<Authority> authorities=authorityRepository.findAuthoritiesByUserAndIsDelete(user, isDelete);
+        return authorities;
+    }
 
     public List<Authority> findAll(){
         return authorityRepository.findAll();

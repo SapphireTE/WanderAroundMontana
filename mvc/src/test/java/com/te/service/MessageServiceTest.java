@@ -2,6 +2,7 @@ package com.te.service;
 
 import com.amazonaws.services.sqs.AmazonSQS;
 import com.te.config.AppConfig;
+import com.te.service.jms.MessageService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
