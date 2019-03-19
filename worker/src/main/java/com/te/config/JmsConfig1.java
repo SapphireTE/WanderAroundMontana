@@ -18,15 +18,15 @@ import org.springframework.jms.support.destination.DynamicDestinationResolver;
 import javax.jms.Session;
 
 @Configuration
-//@EnableJms
-public class JmsConfig {
-//    @Value("${aws.region}")
-//    private String region="us-east-1";
+@EnableJms
+public class JmsConfig1 {
+    @Value("${aws.region}")
+    private String region;
 
     @Bean(name="connectionFactory")
-    public SQSConnectionFactory getSQSConnectFactory(){
-        AmazonSQS amazonSQSClient=AmazonSQSClientBuilder.standard().withCredentials(new DefaultAWSCredentialsProviderChain()).withRegion("us-east-1").build();
-        SQSConnectionFactory factory=new SQSConnectionFactory(new ProviderConfiguration(),amazonSQSClient);
+    public SQSConnectionFactory getSQSConnectionFactory(){
+        AmazonSQS amazonSQSClient= AmazonSQSClientBuilder.standard().withCredentials(new DefaultAWSCredentialsProviderChain()).withRegion("us-east-1").build();
+        SQSConnectionFactory factory=new SQSConnectionFactory(new ProviderConfiguration(), amazonSQSClient);
         return factory;
     }
 
@@ -37,14 +37,8 @@ public class JmsConfig {
     }
 
     @Bean
-    public DynamicDestinationResolver getTopicDynamicDestinationResolver(){
+    public DynamicDestinationResolver getTopicDynamicDestinationResolver() {
         return new DynamicDestinationResolver();
-    }
-
-    @Bean
-    public AmazonSQS getAmazonSQS(){
-        AmazonSQS amazonSQS= AmazonSQSClientBuilder.standard().withCredentials(new DefaultAWSCredentialsProviderChain()).withRegion("us-east-1").build();
-        return amazonSQS;
     }
 
     @Bean(name="jmsListenerContainerFactory")

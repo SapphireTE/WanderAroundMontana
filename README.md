@@ -5,7 +5,7 @@ This project is a back end of a web service based on Java and Spring frameworks.
 ## Configure local environment 
 ```
 docker pull postgres
-docker run --name rentService -e POSTGRES_USER=${username} -e POSTGRES_PASSWORD=${password} -e POSTGRES_DB=${databaseName} -p ${hostport}:${containerport} -d postgres
+docker run --name Container_Name -e POSTGRES_USER=${username} -e POSTGRES_PASSWORD=${password} -e POSTGRES_DB=${databaseName} -p ${hostport}:${containerport} -d postgres
 ```
 ## Environment properity configuration
 
@@ -45,6 +45,8 @@ mvn compile test -Dspring.profiles.active=${env} -P ${env}
 ## Create war package file
 ``` 
 mvn compile package -DoutputDirectory=./target -P dev
+    in mvn package
 ```
+## User Controller API Demo
 
 

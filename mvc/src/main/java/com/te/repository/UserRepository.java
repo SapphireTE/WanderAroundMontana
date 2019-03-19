@@ -21,7 +21,7 @@ public interface UserRepository extends CrudRepository<User, Long> { // -- inter
 
     List<User> findByLastName (String lastName);
 
-    List<User> username (String username);
+//    List<User> username (String username);
 
 
 

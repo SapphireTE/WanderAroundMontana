@@ -1,4 +1,4 @@
-FROM tomcat:9.0.14-jre11
+FROM tomcat:9.0.16-jre8
 
 MAINTAINER Cai, Te
 #ARG APP_ENV=test

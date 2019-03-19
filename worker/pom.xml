@@ -7,7 +7,9 @@
     <groupId>com.te</groupId>
     <artifactId>worker</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
     <name>worker</name>
+    <description>com.te.worker</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
