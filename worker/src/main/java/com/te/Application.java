@@ -3,6 +3,8 @@ package com.te;
 import java.util.Arrays;
 
 //import com.te.service.SQSMessageService;
+//import com.te.service.SQSMessageService;
+import com.te.service.SQSMessageService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,10 +16,10 @@ import javax.swing.*;
 @SpringBootApplication
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) { //main method
         ApplicationContext app=SpringApplication.run(Application.class, args);
-//        SQSMessageService messageService=app.getBean(SQSMessageService.class);
-//        messageService.receiveMessage();
+        SQSMessageService messageService=app.getBean(SQSMessageService.class);
+        messageService.receiveMessage();
     }
 
 //    @Bean
