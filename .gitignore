@@ -4,3 +4,8 @@ target
 *.class 
 *.war
 *.iml
+application-dev.properties
+application-test.properties
+application-unit.properties
+
+
