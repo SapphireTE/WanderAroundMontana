@@ -4,8 +4,9 @@ target
 *.class 
 *.war
 *.iml
-application-dev.properties
-application-test.properties
-application-unit.properties
+
+**/META-INF/env/*.properties
+**/META-INF/*.properties
+!application-template.properties
 
 
