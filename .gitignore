@@ -4,7 +4,6 @@ target
 *.class 
 *.war
 *.iml
-
 **/META-INF/env/*.properties
 **/META-INF/*.properties
 !application-template.properties
