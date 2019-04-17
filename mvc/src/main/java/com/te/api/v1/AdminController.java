@@ -2,21 +2,16 @@ package com.te.api.v1;
 
 import com.te.domain.Authority;
 import com.te.domain.User;
-import com.te.extend.security.JwtTokenUtil;
 import com.te.repository.AuthorityRepository;
 import com.te.service.AuthorityService;
 import com.te.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
-import java.util.Optional;
 
 @RestController //???
 @RequestMapping(value={"/api/admin"}) //???????
@@ -38,7 +33,7 @@ public class AdminController {
 //    @Autowired
 //    private AuthenticationManager authenticationManager;
 
-    @RequestMapping(value = "/users/{Id}", method= RequestMethod.GET)
+    @RequestMapping(value = "/users/{Id}", method= RequestMethod.PUT)
     public User elevateAdminRole (@PathVariable("Id") Long Id){ //???
         logger.debug("user path variable is:"+Id); //??
         User result=userService.findById(Id);

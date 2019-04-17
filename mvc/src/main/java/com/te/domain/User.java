@@ -17,7 +17,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
 @Table(name="users")
-public class User implements UserDetails, Comparable<User> {
+public class User implements UserDetails, Comparable<User>, Comparator<User> {
 
     @Id //this annotation tells id is a primary key
     @GeneratedValue(strategy = SEQUENCE, generator ="users_id_seq") //indicate which table to generate value
@@ -161,10 +161,17 @@ public class User implements UserDetails, Comparable<User> {
         return this.getUsername().compareTo(user.username);
     }
 
+    @Override
+    public int compare(User user1, User user2) {
+        return user1.getLastName().compareTo(user2.getLastName());
+    }
+
 //    public List<User> compareTo(User username){
 //
 //
 //    }
+
+//    public int comparetor
 
 //todo block user
 }

@@ -1,22 +1,16 @@
 package com.te.service;
 
-import com.amazonaws.services.dynamodbv2.xspec.S;
-import com.te.domain.Authority;
 import com.te.domain.User;
-import com.te.repository.AuthorityRepository;
 import com.te.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.management.relation.Role;
+
 import javax.transaction.Transactional;
-import java.time.Instant;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService {
